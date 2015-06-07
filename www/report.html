@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+<script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="js/jquery.mobile-1.4.5.js"></script>  
+ <script src="jss/jquery-1.4.4.min.js"></script>  
+<script type="text/javascript" charset="utf-8">
+function get(){
+ var queryString = new Array();
+
+          if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+            var myArray=queryString[key].split('|');
+          // alert(queryString[key]);
+              document.getElementById('member2').value =myArray[0];
+              document.getElementById('name1').innerHTML =myArray[1];
+               $("#callAjax").ready(function() {
+                 var member2 = $.trim($("#member2").val());
+                // alert(member2);
+            $.ajax({
+                      
+      //url: "shop.php",
+      url: "http://shopnearn.co.in/mobileapp/shop.php",
+           type     : 'POST',
+              data: ({member1:member2}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                }); });
+     $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
+function onSuccess(data)
+        {
+         $("#resultLog").html("Result: " + data);
+       var myArray=data.split('|');
+
+  //document.getElementById('member1').value =myArray[0];
+  document.getElementById('billno').innerHTML=myArray[1];
+  document.getElementById('amount').innerHTML =myArray[2];
+  document.getElementById('com').innerHTML=myArray[3];
+  document.getElementById('date').innerHTML=myArray[4];
+  document.getElementById('member1').innerHTML =myArray[0];
+   }
+    }
+    function getid()
+{
+window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+}
+</script>
+        </head>
+<body onload="get();" id="callAjax">
+
+<div data-role="page" id="pageone">
+  <div data-role="panel" id="overlayPanel1" data-display="overlay" data-rel="back"> 
+    <ul data-role="listview">
+   <li data-icon="camera"><a onclick="getid();" style= font-size:0.9em;>QR Code</a></li>
+  <li data-icon="user"><a onclick="getid();" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="phone"><a onclick="getid();" style= font-size:0.9em;>Mobile No</a></li>
+   <li data-icon="user"><a href="#placeholder2" style= font-size:0.9em; data-rel="back">About Us</a></li>
+  <li data-icon="phone"><a href="#placeholder3" style= font-size:0.9em; data-rel="back">Contact Us</a></li>
+  <li data-icon="gear"><a href="login.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
+</ul>  
+</div> 
+<div data-role="header">
+ 
+    <div data-role="header" style="background-color:#0CADEC">
+
+         <h3 style="text-align: center"><div id="name1"></div></h3>
+           <a data-rel="external" rel="external"  role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
+          </a>         
+         <a href="login.html?reload" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external"  >Logout</a>
+
+            </div>   
+
+  </div>
+  <div data-role="main" class="ui-content">
+    <h2>Report</h2>
+    <ul data-role="listview" data-inset="true">
+    <input type="hidden" name="member2" id="member2"  required>
+      <li>Member Id:<span class="ui-li-count"  id="member1"></span></li>
+      <li>Bill No.:<span class="ui-li-count"  id="billno"></span></li>
+      <li>Bill Amount:<span class="ui-li-count"  id="amount"></span></li>
+      <li>User:<span class="ui-li-count" id="com" ></span></li>
+      <li>Entry Date:<span class="ui-li-count"  id="date"></span></li>
+    </ul>
+  </div>
+
+  
+
+</div> 
+
+</body>
+</html>

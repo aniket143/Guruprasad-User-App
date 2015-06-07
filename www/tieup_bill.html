@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">
+<script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/jquery.mobile-1.4.5.js"></script>  
+ <script src="jss/jquery-1.4.4.min.js"></script>  
+ <script>
+function get1()
+{
+var queryString = new Array();
+
+          if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+
+var myArray=queryString[key].split('|');
+     document.getElementById('member1').value =myArray[0];
+     document.getElementById('sms').value =myArray[1];
+     document.getElementById('t1').value =myArray[2];
+     document.getElementById('t2').value =myArray[3];
+               document.getElementById('name1').innerHTML =myArray[3];
+     }
+      function checkid()
+   {
+ var sms=document.getElementById('sms').value;
+var code=document.getElementById('code').value;
+ var trans=document.getElementById('trans').checked;
+ if(code=="" || sms!=code)
+ {
+alert('Please Enter Correct  Password !!!'); 
+document.getElementById('code').value="";
+document.getElementById('trans').checked=false;
+ }     else
+ {
+ //alert('Transaction Code is Correct!!!'); 
+// window.location.href="http://110.5.72.29/demo/execute1.php";
+ //window.location.href="execute1.php";
+ }
+    }
+    
+    $(function() {
+      $("#callAjax").click(function() {
+            var billno = $.trim($("#billno").val());
+            var member1 = $.trim($("#member1").val());
+            var amount = $.trim($("#amount").val());
+            var date = $.trim($("#date").val());
+            var payment = $.trim($("#payment").val());
+            var com = $.trim($("#com").val());
+            var sms= $.trim($("#sms").val());
+            var t1= $.trim($("#t1").val());
+
+            $.ajax({
+   // url: "tieup_entry.php",
+        url: "http://shopnearn.co.in/mobileapp/tie_up.php",
+           type     : 'POST',
+              data: ({billno: billno,amount:amount,payment:payment,com:com,member1:member1,t1:t1,sms:sms}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });
+                });
+     $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
+function onSuccess(data)
+        {
+                    var member1 = $.trim($("#member1").val());
+                    var billno = $.trim($("#billno").val());
+                    var amount = $.trim($("#amount").val());
+                    var t2 = $.trim($("#t2").val());
+                     var pay= document.getElementById('trans').checked;
+                    var trans= document.getElementById('trans').checked;
+                    if(billno=="" || amount=="" ||pay==false|| trans==false)
+            {
+           alert("Please Enter Details Properly"); 
+                 document.getElementById('code').value="";
+                 document.getElementById('billno').value="";
+                 document.getElementById('com').value="";
+                 document.getElementById('amount').value="";
+            }
+            else{
+ $("#resultLog").html("Result: " + data);
+            		window.location.href="report1.html?member="+member1+"|"+t2;
+        }}
+  });
+   function checkdate()
+{
+ var date=document.getElementById('date').value;
+ var payment=document.getElementById('payment').value;
+ var net=document.getElementById('net').value;
+ var today=new Date();
+ var dd=today.getDate();
+ var mm=today.getMonth()+1;
+ mm1='0'+mm;
+ dd1='0'+dd;
+ var yy=today.getFullYear();
+ var today1=yy+'-'+mm1+'-'+dd1;
+ if(date==today1 && payment==today1 && net==today1){}
+else
+{
+alert("Please Select Today's date");
+document.getElementById('date').value="";
+document.getElementById('payment').value="";
+document.getElementById('net').value="";
+}
+} 
+function getid()
+{
+window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+}
+</script>
+</head>
+
+<body onload="get1();">
+<div data-role="page" id="pagefour">
+<div data-role="panel" id="overlayPanel1" data-display="overlay" data-rel="back"> 
+    <ul data-role="listview">
+   <li data-icon="camera"><a onclick="getid();" style= font-size:0.9em;>QR Code</a></li>
+  <li data-icon="user"><a onclick="getid();" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="phone"><a onclick="getid();" style= font-size:0.9em;>Mobile No</a></li>
+   <li data-icon="user"><a href="#placeholder2" style= font-size:0.9em; data-rel="back">About Us</a></li>
+  <li data-icon="phone"><a href="#placeholder3" style= font-size:0.9em; data-rel="back">Contact Us</a></li>
+  <li data-icon="gear"><a href="login.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
+</ul>  
+</div> 
+<div data-role="header">
+ 
+  <div data-role="header" style="background-color:#0CADEC">
+
+         <h3 style="text-align: center"><div id="name1"></div></h3>
+           <a data-rel="external" rel="external"  data-rel="back" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
+          </a>         
+         <a onclick="getid();" class="ui-btn ui-corner-all ui-shadow ui-icon-home ui-btn-icon-left" >Home</a>
+
+            </div>   
+
+  </div>
+    <div data-role="main" class="ui-content">
+
+<form name="contact_form" class="contact_form" method="post">
+<input type="hidden" name="member1" id="member1"  required>
+ <input type="hidden" name="sms" id="sms"  required> 
+  <label for="shop">Shop Id:</label>
+       <input type="text" name="t1" id="t1" readonly>
+ <label for="name">Shop Name:</label>
+      <input type="text" name="t2" id="t2" readonly>
+   <label for="billno">Bill No.:</label>
+      <input type="text" name="billno" id="billno"  required>
+      <label for="amount">Total Purchase  Amount:</label>
+      <input type="text" name="amount" id="amount" required>
+           <fieldset class="ui-field-contain">
+      <label for="payment">Cash or Card Payment Select:</label>
+        <select name="day" id="day">
+          <option value="cash">Cash Payment</option>
+          <option value="card">Card Payment</option>
+          </select>
+      </fieldset>
+    <label for="pay">Payment Confirm</label>
+          <input type="checkbox" name="pay" id="pay"  required>
+      <label for="code">Client Passward Code:</label>
+      <input type="password" name="code" id="code"  required>
+  <label for="trans">Validation Confirm</label>
+      <input type="checkbox" name="trans" id="trans"  onclick="checkid();" required>
+     <input type="submit"  value="Submit" id="callAjax" name="submit" data-transition="slide" data-theme="b">
+    </form>
+</div>
+</div>
+</body>
+</html>
