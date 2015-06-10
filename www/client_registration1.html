@@ -120,6 +120,7 @@ function onSuccess(data)
            
      else{
           $("#resultLog").html("Result: " + data);
+                     alert("Client Registered Successfully...!!!!");  
           window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
           }
           }
@@ -277,18 +278,19 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
   <li data-icon="user"><a onclick="getid();" style= font-size:0.9em;>Member Id</a></li>
   <li data-icon="phone"><a onclick="getid();" style= font-size:0.9em;>Mobile No</a></li>
   <li data-icon="user"><a href="tieup_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
+     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="tieup_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
 </div> 
-    <div data-role="header">
+
    <div data-role="header" data-position="fixed">
     <body onload="getname1();">
        <h3 style="text-align: center"><div id="name1"></div></h3>
            <a data-rel="external" rel="external"  role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
           <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext">home</a>
-           </body> </div></div>
+           </body> </div>
            
     <div data-role="main" class="ui-content">
 <br></br><div align="middle"><h3>Client Registration Form</h3></div>
@@ -374,7 +376,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
     </div>
 </div>
          <div class="ui-field-contain">      
-      <label for="nomineeName">Name :</label>
+      <label for="nomineeName"> Nominee Name :</label>
    <input  id="nomineeName" type="text" name="nomineeName" onkeypress="return lettersOnly(event)" >
 </div>
          <div class="ui-field-contain">    
@@ -450,12 +452,16 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
         <input id="confirm_password" type="password" onkeyup="checkPass(); return false;" name="confirm_password" maxlength="4" required>
 </div>
          <div class="ui-field-contain">
-       <label><input type="checkbox" value="A" onclick="check();" required>&nbsp;I agree the company's </label><a href="tieup_terms.html?reload" style="underline:block"  data-rel="external" rel="external">terms and conditions</a>
+     <label> <input type="checkbox" value="A" onclick="check();" required>&nbsp;I agree the company's</label><a href="#terms" data-rel="popup"  data-transition="flip">Terms and conditions</a>
 </div>    
      <a  id="callAjax" data-transition="slide" data-theme="b"  class="ui-btn" data-rel="external" rel="external">Submit</a>
     </form>
 </div>
-
+<div data-role="popup" id="terms" class="ui-content">
+<a href="#member_reg_new" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+      <p>Terms and Conditions</p>
+    </div>
+    </div>
     <!--......client Registration Form End........-->
 </body>
 </html>
