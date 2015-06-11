@@ -342,27 +342,26 @@ var myArray=queryString[key].split('|');
        <div data-role="main" class="ui-content">
 
          <input tabindex="-1" class="ui-btn ui-shadow"" id="callAjax" onclick="checkConnection();" value="Submit" style="text-align: center" type="button">  
- </div>
-</div>
-</div>
-</div>
+      </div>
+   </div>
+   </div>
    </div>
    </div>
    
    <div data-role="page" id="mobno1">
-  <div data-role="panel" id="overlayPanel1" data-display="overlay" data-rel="back"> 
+  <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;">Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
-    <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
+   <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
 
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
 </div> 
-    <div data-role="header">
+
    <div data-role="header" data-position="fixed">
     <body onload="getname();">
          <h3 style="text-align: center"><div id="name3"></div></h3>
@@ -371,15 +370,20 @@ var myArray=queryString[key].split('|');
           <a href="#qrpage" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
             </body>
             </div>
-     
 
+     
+<div role="main" class="ui-content" data-role="content">
+   <div class="ui-field-contain">
  <label for="mobno">Mobile No:</label>
             <input class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c" id="theName1" name="theName1" placeholder="Enter Your Mobile No...." onblur="check_id1(this.value);" type="tel" required>
                <div id="sponsorval1"></div>  
-
+       <div data-role="main" class="ui-content">
         <input tabindex="-1" class="ui-btn-hidden" id="callAjax1" onclick="checkConnection();" value="Submit" type="button">  
 </div>
    </div>
+   </div>
+   </div>
+   
    <div data-role="page" id="qrcode1">
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
    <ul data-role="listview">
