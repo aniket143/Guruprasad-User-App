@@ -232,6 +232,22 @@ var myArray=queryString[key].split('|');*/
 	window.location.href="client_registration1.html?member="+localStorage.getItem("shopname");
 	} 
 	
+	function get()
+	{
+var queryString = new Array();
+
+          if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+
+var myArray=queryString[key].split('|');
+	window.location.href="qrcode1.html?member="+myArray[0]+"|"+myArray[1];
+	}  
   </script>
 </head>
 <body>
@@ -248,6 +264,7 @@ var myArray=queryString[key].split('|');*/
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
 </div> 
+
    <div data-role="header" data-position="fixed">
    <body onload="getname();">
          <h3 style="text-align: center"><div id="name" ></div></h3>
@@ -257,6 +274,7 @@ var myArray=queryString[key].split('|');*/
             </body>
             </div>
 
+           
 <div data-role="controlgroup" data-type="vertical">
     <a href="#qrpage" class="ui-btn">Billing Trasaction Process</a><br>
     </div>
@@ -369,11 +387,11 @@ var myArray=queryString[key].split('|');*/
    <div class="ui-field-contain">
  <label for="mobno">Mobile No:</label>
             <input class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c" id="theName1" name="theName1" placeholder="Enter Your Mobile No...." onblur="check_id1(this.value);" type="text" required>
-               <div id="sponsorval1"></div>  
+               <div id="sponsorval1"></div>  </div>
   <div data-role="main" class="ui-content">
         <input tabindex="-1" class="ui-btn-hidden" id="callAjax1" onclick="checkConnection();" value="Submit" type="button">  
 </div>
-</div>
+
    </div>
    </div>
    <div data-role="page" id="qrcode1">
@@ -389,6 +407,7 @@ var myArray=queryString[key].split('|');*/
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
 </div> 
+
    <div data-role="header" data-position="fixed">
     <body onload="getname();">
          <h3 style="text-align: center"><div id="name4"></div></h3>
@@ -398,14 +417,9 @@ var myArray=queryString[key].split('|');*/
             </body>
             </div>
  <div data-role="main" class="ui-content"> 
-<form name="contact_form" class="contact_form" method="post" action="client_details2.php" target="client_details2.php" >
-      <label for="qrcode"><a onclick="capturePhoto()" style="width:auto;height:auto">Capture QR Code</a></label>
-     
-    <input type="submit" value="Submit" name="submit" onclick="checkConnection();"  data-transition="slide" data-theme="b"> 
-    </form>
-
+             <a onclick="get();" class="ui-btn">Scan QR Code</a>  
   </div>
-
+ 
 </div>
    </div>
    </body>
