@@ -72,7 +72,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
   <li data-icon="user"><a onclick="getid();" style= font-size:0.9em;>Member Id</a></li>
   <li data-icon="phone"><a onclick="getid();" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="tieup_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
-    <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+    <li data-icon="info"><a href="tieup_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="tieup_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
@@ -83,6 +83,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
            <a data-rel="external" rel="external"  role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
           <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext" >home</a>
+
             </div>
          <form>
           <ul data-role="listview" data-inset="true">
@@ -92,7 +93,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
   <span class="ui-li-count"  id="code"></span></li>
     <li>Client Name:
    <span class="ui-li-count" id="name"> </span></li>
-    <li style="line-height: 3">Address:
+    <li style="line-height: 5">Address:
    <span class="ui-li-count"  id="address"></span></li>
     <li>Email Id:
    <span class="ui-li-count"  id="email"> </span></li>
