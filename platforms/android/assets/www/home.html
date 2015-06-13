@@ -1,16 +1,15 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html>
 <head>
- <meta name="viewport" content="width=device-width, initial-scale=1">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">  
  <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />  
  <link rel="stylesheet" href="css/themes/my-custom-theme.css" />
 <script src="js/jquery-1.11.3.min.js"></script>
- <script src="js/jquery.mobile-1.4.5.js"></script>  
+  <script src="js/jquery.mobile-1.4.5.js"></script>  
  <script src="jss/jquery-1.4.4.min.js"></script>  
+<script type="text/javascript">
 
-<script type="text/javascript"> 
 function checkConnection(e) {
 		if (doesConnectionExist() == true) {
 	//	alert("connection exists!");
@@ -108,9 +107,7 @@ var myArray=queryString[key].split('|');
   });
  
   $(function() {
-  
-
-      $("#callAjax1").click(function() {
+     $("#callAjax1").click(function() {
       
             var theName1 = $.trim($("#theName1").val());
            // alert(theName1);
@@ -232,7 +229,24 @@ var myArray=queryString[key].split('|');
 	window.location.href="client_registration.html?member="+myArray[1];
 	}
 	
-	
+
+       
+       function get()
+	{
+var queryString = new Array();
+
+          if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+
+var myArray=queryString[key].split('|');
+	window.location.href="qrcode.html?member="+myArray[0]+"|"+myArray[1];
+	}  
   </script>
 </head>
 <body>
@@ -274,7 +288,7 @@ var myArray=queryString[key].split('|');
          <h3 style="text-align: center"><div id="name1"></div></h3>
            <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a href="#option" class="ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
+          <a href="#option" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext">home</a>
             </body>
             </div>
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
@@ -283,7 +297,7 @@ var myArray=queryString[key].split('|');
   <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
     <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
-     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+     <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
 
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
@@ -292,14 +306,7 @@ var myArray=queryString[key].split('|');
 
    
   <div data-role="main" class="ui-content">
-  <!-- <div data-role="navbar">
-      <ul>
-        <li><a href="#qrcode1" class="ui-btn-active" data-icon="camera" style="border-color:white">QR Code</a></li>
-        <li><a href="#memberid1" class="ui-btn-active" data-icon="user" style="border-color:white">Client Id</a></li>
-
-        <li><a href="#mobno1" class="ui-btn-active" data-icon="phone" style="border-color:white">Mobile No</a></li>
-      </ul>
-    </div> -->
+  
 <div data-role="controlgroup" data-type="vertical">
     <a href="#qrcode1" class="ui-btn ui-icon-camera ui-btn-icon-top"   style="border-color:orange">QR Code</a><br><br>
       </div>
@@ -319,7 +326,7 @@ var myArray=queryString[key].split('|');
   <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
-     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+     <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
 
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
@@ -342,11 +349,12 @@ var myArray=queryString[key].split('|');
        <div data-role="main" class="ui-content">
 
          <input tabindex="-1" class="ui-btn ui-shadow"" id="callAjax" onclick="checkConnection();" value="Submit" style="text-align: center" type="button">  
-      </div>
+<!--          </div> -->
    </div>
    </div>
    </div>
    </div>
+
    
    <div data-role="page" id="mobno1">
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
@@ -355,7 +363,7 @@ var myArray=queryString[key].split('|');
   <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
-     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+     <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
 
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
@@ -383,6 +391,7 @@ var myArray=queryString[key].split('|');
    </div>
    </div>
    </div>
+     
    
    <div data-role="page" id="qrcode1">
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
@@ -391,12 +400,13 @@ var myArray=queryString[key].split('|');
   <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
-    <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+    <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
 
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
 </div> 
+
    <div data-role="header" data-position="fixed">
     <body onload="getname();">
          <h3 style="text-align: center"><div id="name4"></div></h3>
@@ -407,24 +417,9 @@ var myArray=queryString[key].split('|');
             </div>
      
  <div data-role="main" class="ui-content"> 
-<!-- <body onload="load()">
-    <div class="container">
-	
-  	<object  id="iembedflash" classid="clsid:d27cdb6e-ae6d-11cf-96b8-444553540000" codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=7,0,0,0" width="320" height="240">
-  		<param name="movie" value="camcanvas.swf" />
-  		<param name="quality" value="high" />
-		<param name="allowScriptAccess" value="always" />
-  		<embed  allowScriptAccess="always"  id="embedflash" src="camcanvas.swf" quality="high" width="320" height="240" type="application/x-shockwave-flash" pluginspage="http://www.macromedia.com/go/getflashplayer" mayscript="true"  />
-    </object>
-	
-    </div> 
- <button onclick="captureToCanvas()">Capture</button><br> 
-
- <canvas id="qr-canvas" width="640" height="480"></canvas> 
-</body> -->
-<!-- <a href="test.html">Scan Your QR Code</a> -->
+             <a onclick="get();" class="ui-btn">Scan QR Code</a>  
   </div>
-
+ 
 </div>
    </div>
      
