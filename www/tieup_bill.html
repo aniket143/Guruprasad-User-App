@@ -78,6 +78,30 @@ document.getElementById('trans').checked=false;
     }
     
     $(function() {
+      $("#billno").click(function() {
+        var shopid=document.getElementById('t1').value;
+            $.ajax({
+
+      // url: "php4/billno.php",
+      url: "http://shopnearn.co.in/mobileapp/billno.php",
+         type     : 'POST',
+              data: ({shopid:shopid}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });
+                });
+     $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
+          
+function onSuccess(data)
+        {
+         //alert(data);
+         document.getElementById('billno').value=data;
+          }
+  });  
+    
+    $(function() {
       $("#callAjax").click(function() {
             var billno = $.trim($("#billno").val());
             var member1 = $.trim($("#member1").val());
@@ -157,7 +181,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
   <li data-icon="user"><a onclick="getid();" style= font-size:0.9em;>Member Id</a></li>
   <li data-icon="phone"><a onclick="getid();" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="tieup_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
-     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+     <li data-icon="info"><a href="tieup_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="tieup_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
@@ -169,7 +193,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
          <h3 style="text-align: center"><div id="name1"></div></h3>
            <a data-rel="external" rel="external"  data-rel="back" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext">home</a>
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext" >home</a>
 
             </div>   
 
