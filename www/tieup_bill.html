@@ -82,7 +82,7 @@ document.getElementById('trans').checked=false;
         var shopid=document.getElementById('t1').value;
             $.ajax({
 
-      // url: "php4/billno.php",
+      //url: "billno.php",
       url: "http://shopnearn.co.in/mobileapp/billno.php",
          type     : 'POST',
               data: ({shopid:shopid}),
@@ -113,8 +113,9 @@ function onSuccess(data)
             var t1= $.trim($("#t1").val());
 
             $.ajax({
-   // url: "tieup_entry.php",
-        url: "http://shopnearn.co.in/mobileapp/tie_up.php",
+
+       // url: "tie_up.php",
+       url: "http://shopnearn.co.in/mobileapp/tie_up.php",
            type     : 'POST',
               data: ({billno: billno,amount:amount,payment:payment,com:com,member1:member1,t1:t1,sms:sms}),
                   cache: false,
@@ -126,6 +127,7 @@ function onSuccess(data)
           $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
 function onSuccess(data)
         {
+        alert(data);
                     var member1 = $.trim($("#member1").val());
                     var billno = $.trim($("#billno").val());
                     var amount = $.trim($("#amount").val());
