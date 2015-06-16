@@ -247,6 +247,16 @@ var queryString = new Array();
 var myArray=queryString[key].split('|');
 	window.location.href="qrcode.html?member="+myArray[0]+"|"+myArray[1];
 	}  
+	function numbersonly(myfield, e, dec)
+{
+  	var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+           var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+         //   document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+}
+	
   </script>
 </head>
 <body>
@@ -383,7 +393,7 @@ var myArray=queryString[key].split('|');
 <div role="main" class="ui-content" data-role="content">
    <div class="ui-field-contain">
  <label for="mobno">Mobile No:</label>
-            <input class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c" id="theName1" name="theName1" placeholder="Enter Your Mobile No...." onblur="check_id1(this.value);" type="tel" required>
+            <input class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);" id="theName1" name="theName1" placeholder="Enter Your Mobile No...." onblur="check_id1(this.value);" type="tel" required>
                <div id="sponsorval1"></div>  
        <div data-role="main" class="ui-content">
         <input tabindex="-1" class="ui-btn-hidden" id="callAjax1" onclick="checkConnection();" value="Submit" type="button">  
