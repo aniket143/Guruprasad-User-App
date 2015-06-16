@@ -112,8 +112,21 @@ function onSuccess(data)
             var com = $.trim($("#com").val());
             var sms= $.trim($("#sms").val());
             var t1= $.trim($("#t1").val());
+            var code= $.trim($("#code").val());
+            var pay= document.getElementById('pay').checked;
+             var trans= document.getElementById('trans').checked;
 
 
+ if(billno=="" || com=="" || amount=="" ||pay==false|| trans==false || code=="")
+            {
+           alert("Please Enter Details Properly"); 
+                 document.getElementById('code').value="";
+                 document.getElementById('billno').value="";
+                 document.getElementById('com').value="";
+                 document.getElementById('amount').value="";
+            }
+            else
+            {
             $.ajax({
    // url: "shop_entry.php",
        url: "http://shopnearn.co.in/mobileapp/shop_insert_mob.php",
@@ -123,6 +136,7 @@ function onSuccess(data)
                   dataType: "text",
                   success: onSuccess
                 });
+                }
                 });
      $("#resultLog").ajaxError(function(event, request, settings, exception) {
           $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
@@ -135,7 +149,7 @@ function onSuccess(data)
                     var com = $.trim($("#com").val());
                     var code= $.trim($("#code").val());
                     var t2= $.trim($("#t2").val());
-                    var pay= document.getElementById('trans').checked;
+                    var pay= document.getElementById('pay').checked;
                     var trans= document.getElementById('trans').checked;
                     if(billno=="" || com=="" || amount=="" ||pay==false|| trans==false)
             {
