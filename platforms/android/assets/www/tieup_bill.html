@@ -186,6 +186,16 @@ function getid()
 {
 window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
 }
+
+function numbersonly(myfield, e, dec)
+{
+  	var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+           var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+         //   document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+}
 </script>
 </head>
 
@@ -203,6 +213,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
 </ul>  
 </div> 
 
+ 
    <div data-role="header" data-position="fixed">
 
          <h3 style="text-align: center"><div id="name1"></div></h3>
@@ -211,6 +222,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
           <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext" >home</a>
 
             </div>   
+
 
     <div data-role="main" class="ui-content">
 
@@ -224,7 +236,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
    <label for="billno">Bill No.:</label>
       <input type="text" name="billno" id="billno"  readonly>
       <label for="amount">Total Purchase  Amount:</label>
-      <input type="text" name="amount" id="amount" required>
+      <input type="text" name="amount" id="amount" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);" required>
            <fieldset class="ui-field-contain">
       <label for="payment">Cash or Card Payment Select:</label>
         <select name="day" id="day">
