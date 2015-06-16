@@ -84,7 +84,15 @@ document.getElementById('name1').innerHTML=queryString[key];
             var password= $.trim($("#password").val());
             var confirm_password= $.trim($("#confirm_password").val());
 
-     
+     if(applicateName=="" || sponsorId==""||date==""||panNo==""||cardid==""||address==""||address==""||city_town==""||state==""||pincode==""||mobileNo==""||password==""||confirm_password=="")
+           {
+           alert("Please Enter All details properly!!");  
+           document.getElementById('sponsorId').value="";         
+           document.getElementById('password').value="";         
+           document.getElementById('confirm_password').value="";         
+           }
+           
+     else{
             $.ajax({
     //url: "client_entry1.php?action=member",
       url: "http://shopnearn.co.in/mobileapp/client_entry1.php?action=member",
@@ -94,6 +102,7 @@ document.getElementById('name1').innerHTML=queryString[key];
                   dataType: "text",
                   success: onSuccess
                 });
+                }
                 });
      $("#resultLog").ajaxError(function(event, request, settings, exception) {
           $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
