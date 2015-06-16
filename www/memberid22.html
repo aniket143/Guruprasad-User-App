@@ -90,18 +90,18 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
 
          <form>
           <ul data-role="listview" data-inset="true">
-          <li>Client Id:
-   <span class="ui-li-count" id="member"></span></li>
-    <li>Card No.:
-   <span class="ui-li-count" id="code"></span></li>
-    <li>Client Name:
-   <span class="ui-li-count" id="name"></span></li>
-    <li style="line-height: 5">Address:
-   <span  class="ui-li-count" id="address" ></span></li>
-    <li>Email Id:
-   <span class="ui-li-count" id="email"> </span></li>
-   <li>Mobile No:
-   <span class="ui-li-count" id="mobno"></span></li>
+          <li><div class="ui-block-a">Client Id:</div>
+   <div class="ui-block-b"  style="text-align:right;" id="member"></div></li>
+    <li><div class="ui-block-a">Card No.:</div>
+   <div class="ui-block-b"  style="text-align:right;" id="code"></div></li>
+    <li><div class="ui-block-a">Client Name:</div>
+   <div  class="ui-block-b"  class="ui-li-count" id="name"></div></li>
+    <li><div class="ui-block-a">Address:</div>
+     <div class="ui-block-b"  style="text-align:right;" id="address" ></div>  </li>
+    <li><div class="ui-block-a">Email Id:</div>
+   <div class="ui-block-b" id="email"> </div></li>
+   <li><div class="ui-block-a">Mobile No:</div>
+   <div class="ui-block-b" id="mobno"></div></li>
    <input type="hidden" name="sms" id="sms" readonly> </label>
       <input type="hidden" name="t1" id="t1" readonly> </label>
       <input type="hidden" name="t2" id="t2" readonly> </label>
