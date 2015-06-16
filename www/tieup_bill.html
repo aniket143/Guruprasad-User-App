@@ -82,8 +82,8 @@ document.getElementById('trans').checked=false;
         var shopid=document.getElementById('t1').value;
             $.ajax({
 
-      //url: "billno.php",
-      url: "http://shopnearn.co.in/mobileapp/billno.php",
+     // url: "billno.php",
+     url: "http://shopnearn.co.in/mobileapp/billno.php",
          type     : 'POST',
               data: ({shopid:shopid}),
                   cache: false,
@@ -96,7 +96,7 @@ document.getElementById('trans').checked=false;
           
 function onSuccess(data)
         {
-         //alert(data);
+       //  alert(data);
          document.getElementById('billno').value=data;
           }
   });  
@@ -111,28 +111,41 @@ function onSuccess(data)
             var com = $.trim($("#com").val());
             var sms= $.trim($("#sms").val());
             var t1= $.trim($("#t1").val());
-
+            var code= $.trim($("#code").val());
+               var pay= document.getElementById('pay').checked;
+                    var trans= document.getElementById('trans').checked;
+                    if(billno=="" || amount=="" ||pay==false|| trans==false || code=="")
+            {
+           alert("Please Enter Details Properly"); 
+                 document.getElementById('code').value="";
+                 document.getElementById('billno').value="";
+                 document.getElementById('com').value="";
+                 document.getElementById('amount').value="";
+                 document.getElementById('code').value="";
+            }
+            else{
             $.ajax({
 
-       // url: "tie_up.php",
-       url: "http://shopnearn.co.in/mobileapp/tie_up.php",
+      //  url: "tie_up.php",
+      url: "http://shopnearn.co.in/mobileapp/tie_up.php",
            type     : 'POST',
               data: ({billno: billno,amount:amount,payment:payment,com:com,member1:member1,t1:t1,sms:sms}),
                   cache: false,
                   dataType: "text",
                   success: onSuccess
                 });
+                }
                 });
      $("#resultLog").ajaxError(function(event, request, settings, exception) {
           $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
 function onSuccess(data)
         {
-        alert(data);
+       // alert(data);
                     var member1 = $.trim($("#member1").val());
                     var billno = $.trim($("#billno").val());
                     var amount = $.trim($("#amount").val());
                     var t2 = $.trim($("#t2").val());
-                     var pay= document.getElementById('trans').checked;
+                     var pay= document.getElementById('pay').checked;
                     var trans= document.getElementById('trans').checked;
                     if(billno=="" || amount=="" ||pay==false|| trans==false)
             {
@@ -145,7 +158,8 @@ function onSuccess(data)
             else{
  $("#resultLog").html("Result: " + data);
             		window.location.href="report1.html?member="+member1+"|"+t2;
-        }}
+        }
+        }
   });
    function checkdate()
 {
