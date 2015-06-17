@@ -258,6 +258,14 @@ var myArray=queryString[key].split('|');
          //   document.getElementById("error").style.display = ret ? "none" : "inline";
             return ret;
 }
+function getid()
+{
+window.location.href="#qrpage?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+}	
+function getid1()
+{
+window.location.href="#option?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+}	
   </script>
 </head>
 <body>
@@ -265,7 +273,7 @@ var myArray=queryString[key].split('|');
 <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="tieup_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -296,7 +304,7 @@ var myArray=queryString[key].split('|');
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="tieup_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -311,7 +319,7 @@ var myArray=queryString[key].split('|');
          <h3 style="text-align: center"><div id="name1"></div></h3>
            <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a href="#option" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
+          <a onclick="getid1();" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
             </body>
             </div>
   <div data-role="main" class="ui-content">
@@ -339,7 +347,7 @@ var myArray=queryString[key].split('|');
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em; >Mobile No</a></li>
   <li data-icon="user"><a href="tieup_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -354,7 +362,7 @@ var myArray=queryString[key].split('|');
          <h3 style="text-align: center"><div id="name2"></div></h3>
            <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a href="#qrpage" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
             </body>
             </div>
     <div role="main" class="ui-content" data-role="content">
@@ -375,7 +383,7 @@ var myArray=queryString[key].split('|');
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="tieup_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -390,13 +398,13 @@ var myArray=queryString[key].split('|');
          <h3 style="text-align: center"><div id="name3"></div></h3>
            <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a href="#qrpage" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
             </body>
             </div>
      <div role="main" class="ui-content" data-role="content">
    <div class="ui-field-contain">
  <label for="mobno">Mobile No:</label>
-            <input class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);" id="theName1" name="theName1" placeholder="Enter Your Mobile No...." onblur="check_id1(this.value);" type="tel" required>
+            <input class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);" id="theName1" name="theName1" placeholder="Enter Your Mobile No...." onblur="check_id1(this.value);" type="text" required>
                <div id="sponsorval1"></div>  </div>
   <div data-role="main" class="ui-content">
         <input tabindex="-1" class="ui-btn-hidden" id="callAjax1" onclick="checkConnection();" value="Submit" type="button">  
@@ -408,7 +416,7 @@ var myArray=queryString[key].split('|');
   <div data-role="panel" id="overlayPanel1" data-display="overlay" data-rel="back"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="tieup_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -423,7 +431,7 @@ var myArray=queryString[key].split('|');
          <h3 style="text-align: center"><div id="name4"></div></h3>
            <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a href="#qrpage" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
             </body>
             </div>
  <div data-role="main" class="ui-content"> 
