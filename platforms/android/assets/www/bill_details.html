@@ -236,9 +236,9 @@ function numbersonly(myfield, e, dec)
       <label for="name">Shop Name:</label>
       <input type="text" name="t2" id="t2" readonly>
       <label for="billno">Bill No.:</label>
-      <input type="text" name="billno" id="billno"   required>
+      <input type="tel" name="billno" id="billno"   required>
       <label for="amount">Total Purchase Amount:</label>
-      <input type="text" name="amount" id="amount" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);" required>
+      <input type="tel" name="amount" id="amount" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);" required>
      <fieldset class="ui-field-contain">
         <label for="payment">Cash or Card Payment Select:</label>
         <select name="day" id="day">
@@ -251,7 +251,7 @@ function numbersonly(myfield, e, dec)
       <label for="code">Client Passward Code:</label>
       <input type="password" name="code" id="code" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);" required>
  <label for="com">Per Bill Net Profit Entry:</label>
-      <input type="text" name="com" id="com" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
+      <input type="tel" name="com" id="com" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
        <label for="trans">Validation Confirm</label>
       <input type="checkbox" name="trans" id="trans" onclick="checkid()"  required>
      <input type="submit"  value="Submit" id="callAjax" onclick="checkConnection();" name="submit" data-transition="slide">
