@@ -256,7 +256,15 @@ var myArray=queryString[key].split('|');
          //   document.getElementById("error").style.display = ret ? "none" : "inline";
             return ret;
 }
-	
+function getid()
+{
+window.location.href="#qrpage?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+}	
+function getid1()
+{
+window.location.href="#option?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+}	
+
   </script>
 </head>
 <body>
@@ -265,7 +273,7 @@ var myArray=queryString[key].split('|');
 <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
   <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -293,18 +301,12 @@ var myArray=queryString[key].split('|');
  </div>
 
 <div data-role="page" id="qrpage">
-   <div data-role="header" data-position="fixed">
-    <body onload="getname();">
-         <h3 style="text-align: center"><div id="name1"></div></h3>
-           <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
-          </a>         
-          <a href="#option" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext">home</a>
-            </body>
-            </div>
-  <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
+
+   
+              <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
     <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -313,7 +315,14 @@ var myArray=queryString[key].split('|');
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
 </div> 
-
+   <div data-role="header" data-position="fixed">
+ <body onload="getname();">
+         <h3 style="text-align: center"><div id="name1"></div></h3>
+           <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
+          </a>         
+          <a onclick="getid1();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext">home</a>
+            </body>
+            </div>
    
   <div data-role="main" class="ui-content">
   
@@ -333,7 +342,7 @@ var myArray=queryString[key].split('|');
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -348,7 +357,7 @@ var myArray=queryString[key].split('|');
          <h3 style="text-align: center"><div id="name2"></div></h3>
            <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a href="#qrpage" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
             </body>
             </div>
     <div role="main" class="ui-content" data-role="content">
@@ -357,20 +366,20 @@ var myArray=queryString[key].split('|');
             <input class="ui-input-text ui-body-null ui-corner-all ui-shadow-inset ui-body-c" id="theName" name="theName" placeholder="Enter your Member Id...."  onblur="check_id(this.value);" type="text" required>
        <div id="sponsorval"></div>
        <div data-role="main" class="ui-content">
-
-         <input tabindex="-1" class="ui-btn ui-shadow" id="callAjax" onclick="checkConnection();" value="Submit" style="text-align: center" type="button">  
-<!--          </div> -->
+         <input  class="ui-btn ui-shadow" id="callAjax" onclick="checkConnection();" value="Submit" style="text-align:center" type="button" >  
+   
    </div>
    </div>
    </div>
    </div>
+   
 
    
    <div data-role="page" id="mobno1">
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -385,7 +394,7 @@ var myArray=queryString[key].split('|');
          <h3 style="text-align: center"><div id="name3"></div></h3>
            <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a href="#qrpage" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">Logout</a>
             </body>
             </div>
 
@@ -407,7 +416,7 @@ var myArray=queryString[key].split('|');
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
    <ul data-role="listview">
     <li data-icon="camera"><a href="#qrcode1" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Member Id</a></li>
+  <li data-icon="user"><a href="#memberid1" style= font-size:0.9em;>Client Id</a></li>
   <li data-icon="phone"><a href="#mobno1" style= font-size:0.9em;>Mobile No</a></li>
    <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
     <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -422,7 +431,7 @@ var myArray=queryString[key].split('|');
          <h3 style="text-align: center"><div id="name4"></div></h3>
            <a role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a href="#qrpage" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext" data-rel="external" rel="external">Logout</a>
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">Logout</a>
             </body>
             </div>
      
