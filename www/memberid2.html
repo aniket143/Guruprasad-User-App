@@ -93,23 +93,24 @@ window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+lo
             </div>
             <form>
            <ul data-role="listview" data-inset="true">
-          <li><div class="ui-block-a">Client Id:</div>
+          <li><div class="ui-block-a"><b>Client Id:</b></div>
    <div class="ui-block-b"  style="text-align:right;" id="member"></div></li>
-    <li><div class="ui-block-a">Card No.:</div>
+    <li><div class="ui-block-a"><b>Card No.:</b></div>
    <div class="ui-block-b"  style="text-align:right;" id="code"></div></li>
-    <li><div class="ui-block-a">Client Name:</div>
+    <li><div class="ui-block-a"><b>Client Name:</b></div>
    <div  class="ui-block-b"  class="ui-li-count" id="name"></div></li>
-    <li><div class="ui-block-a">Address:</div>
-     <div class="ui-block-b"  style="text-align:right;" id="address" ></div>  </li>
-    <li><div class="ui-block-a">Email Id:</div>
+    <li><div class="ui-block-a"><b>Address:</b></div>
+     <div class="ui-block-b"  id="address" ></div>  </li>
+    <li><div class="ui-block-a"><b>Email Id:</b></div>
    <div class="ui-block-b" id="email"> </div></li>
-   <li><div class="ui-block-a">Mobile No:</div>
+   <li><div class="ui-block-a"><b>Mobile No:</b></div>
    <div class="ui-block-b" id="mobno"></div></li>
    <input type="hidden" name="sms" id="sms" readonly> </label>
       <input type="hidden" name="t1" id="t1" readonly> </label>
       <input type="hidden" name="t2" id="t2" readonly> </label>
        <button id="submit" onclick="f1();">Confirm</button>
               </ul>
+             
       
 </form>
     </body>
