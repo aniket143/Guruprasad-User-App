@@ -368,15 +368,15 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
             </div>
          <div class="ui-field-contain">
       <label for="pincode">PinCode :</label>
-      <input id="pincode" type="text" maxlength="6" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"   name="pincode" required>
+      <input id="pincode" type="tel" maxlength="6" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"   name="pincode" required>
 </div>
          <div class="ui-field-contain"> 
  <label for="phoneno">Primary Phone No(with code) :</label>
-  <input id="phoneno" type="text" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  name="phoneno" >
+  <input id="phoneno" type="tel" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  name="phoneno" >
 </div>
          <div class="ui-field-contain">  
   <label for="mobileNo">Mobile No:</label>
-  <input id="mobileNo" type="text" maxlength="10" name="mobileNo" onblur="phonenumber(this.value)"  onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
+  <input id="mobileNo" type="tel" maxlength="10" name="mobileNo" onblur="phonenumber(this.value)"  onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
 <div id="mob"></div>
 </div>
          <div class="ui-field-contain"> 
@@ -436,7 +436,7 @@ window.location.href="home1.html?member="+localStorage.getItem("shopcode")+'|'+l
 </div>
          <div class="ui-field-contain">     
      <label for="accountNo"> Account No:</label>
-  <input  id="accountNo" type="text" name="accountNo" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);">
+  <input  id="accountNo" type="tel" name="accountNo" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);">
 </div>
          <div class="ui-field-contain"> 	
  	<label for="accountType">Account type:</label>
