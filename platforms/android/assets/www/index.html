@@ -187,8 +187,8 @@ document.addEventListener("backbutton", function() {
         
         function exitAppPopup() {
     navigator.notification.confirm(
-          'Exit PhoneGap ' + device.cordova + ' Demo?'
-        , function(button) {
+          'Exit App?'
+          , function(button) {
               if (button == 2) {
                   navigator.app.exitApp();
               } 
