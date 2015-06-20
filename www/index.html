@@ -177,26 +177,27 @@ document.getElementById('pwd').value="";
         }
 }
 }}
-function openWin() {
- var x = screen.width/2 - 700/2;
-    var y = screen.height/2 - 450/2;
-    var myWindow = window.open('', 'myWindow', 'height=485,width=700,left='+x+',top='+y);
-    myWindow.document.write("<p><img src=app/guruprasad logo.png></img></p>");
-    setTimeout(function(){ myWindow.close() }, 4000);
+document.addEventListener("backbutton", function() {
+            if ( $('.ui-page-active').attr('id') == 'page') {
+                exitAppPopup();
+            } else {
+                history.back();             
+            }
+        }, false);
+        
+        function exitAppPopup() {
+    navigator.notification.confirm(
+          'Exit PhoneGap ' + device.cordova + ' Demo?'
+        , function(button) {
+              if (button == 2) {
+                  navigator.app.exitApp();
+              } 
+          }
+        , 'Exit'
+        , 'No,Yes'
+    );  
+    return false;
 }
-document.addEventListener("backbutton", function(e){
-    if($.mobile.activePage.is('index.html')){
-        /* 
-         Event preventDefault/stopPropagation not required as adding backbutton
-          listener itself override the default behaviour. Refer below PhoneGap link.
-        */
-        //e.preventDefault();
-        navigator.app.exitApp();
-    }
-    else {
-        navigator.app.backHistory()
-    }
-}, false);
 
 </script>
 </head>
