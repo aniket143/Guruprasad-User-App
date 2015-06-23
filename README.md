@@ -1,2 +1,2 @@
 # Guruprasad
-guruprasad shop application
+guruprasad USER application
