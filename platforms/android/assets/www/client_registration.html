@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta charset="ISO-8859-1">
+
  <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">  
  <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />  
@@ -52,6 +55,7 @@ function getname1()
                 }
             }
 document.getElementById('name1').innerHTML=queryString[key];
+document.getElementById('sponsorId').value=queryString[key];
 }
 
  $(function() {
@@ -83,20 +87,21 @@ document.getElementById('name1').innerHTML=queryString[key];
             var ifscCode= $.trim($("#ifscCode").val());
             var password= $.trim($("#password").val());
             var confirm_password= $.trim($("#confirm_password").val());
+            var transaction_password= $.trim($("#transaction_password").val());
+          //  alert(transaction_password);
 if(applicateName=="" || sponsorId==""||date==""||panNo==""||cardid==""||address==""||address==""||city_town==""||state==""||pincode==""||mobileNo==""||password==""||confirm_password=="")
            {
            alert("Please Enter All details properly!!");  
-           document.getElementById('sponsorId').value=""; 
-            document.getElementById('password').value="";         
-           document.getElementById('confirm_password').value="";                 
+           document.getElementById('password').value="";         
+           document.getElementById('confirm_password').value="";         
            }
            
      else{
             $.ajax({
-   // url: "client_entry.php?action=member",
-        url: "http://shopnearn.co.in/mobileapp/client_entry1.php?action=member",
+   url: "http://shopnearn.co.in/mobileapp/client_entry.php?action=member",
+       // url: "http://shopnearn.co.in/mobileapp/client_entry.php?action=member",
            type     : 'POST',
-              data: ({sponsorId:sponsorId,title:title,nameTitle:nameTitle,applicateName:applicateName,fatherName:fatherName,date:date,panNo:panNo,cardid:cardid,address:address,city_town:city_town,district:district,state:state,pincode:pincode,phoneno:phoneno,mobileNo:mobileNo,email:email,nomineeName:nomineeName,relation:relation,payableName:payableName,bankName:bankName,branch:branch,city:city,accountNo:accountNo,accountType:accountType,ifscCode:ifscCode,password:password,confirm_password:confirm_password}),
+              data: ({sponsorId:sponsorId,title:title,nameTitle:nameTitle,applicateName:applicateName,fatherName:fatherName,date:date,panNo:panNo,cardid:cardid,address:address,city_town:city_town,district:district,state:state,pincode:pincode,phoneno:phoneno,mobileNo:mobileNo,email:email,nomineeName:nomineeName,relation:relation,payableName:payableName,bankName:bankName,branch:branch,city:city,accountNo:accountNo,accountType:accountType,ifscCode:ifscCode,password:password,confirm_password:confirm_password,transaction_password:transaction_password}),
                   cache: false,
                   dataType: "text",
                   success: onSuccess
@@ -108,6 +113,7 @@ if(applicateName=="" || sponsorId==""||date==""||panNo==""||cardid==""||address=
           
 function onSuccess(data)
         {
+        //alert(data);
              var sponsorId = $.trim($("#sponsorId").val());
             var applicateName = $.trim($("#applicateName").val());
             var date = $.trim($("#date").val());
@@ -123,13 +129,14 @@ function onSuccess(data)
  if(applicateName=="" || sponsorId==""||date==""||panNo==""||cardid==""||address==""||address==""||city_town==""||state==""||pincode==""||mobileNo==""||password==""||confirm_password=="")
            {
            alert("Please Enter All details properly!!");  
-           document.getElementById('sponsorId').value="";         
+           document.getElementById('password').value="";         
+           document.getElementById('confirm_password').value="";         
            }
            
      else{
           $("#resultLog").html("Result: " + data);
                                alert("Client Registered Successfully...!!!!");  
-          window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+          window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
           }
           }
   });
@@ -181,7 +188,7 @@ $.ajax({
 							document.getElementById('emailval').innerHTML="email exists"; 
 								$('#emailval').fadeOut(3500);
 								document.getElementById('email').value=""; 
-								document.getElementById('email').focus();
+							//	document.getElementById('email').focus();
 						}
 				 }
 		});
@@ -229,9 +236,9 @@ $.ajax({
 					{
      		$('#mob').fadeIn(1000);
 							document.getElementById('mob').innerHTML="mobno exists"; 
-								$('#mob').fadeOut(3500);
+								$('#mob').fadeOut(1000);
 								document.getElementById('mobileNo').value=""; 
-								document.getElementById('mobileNo').focus();
+								//document.getElementById('mobileNo').focus();
 						}
 				 }
 		});
@@ -272,19 +279,22 @@ function lettersOnly(evt) {
     }
     function getid()
 {
-window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 } 
 
+	function get6()
+	{
+	window.location.href="shop_loc.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+	}   
 </script>
 </head>
-<body>
+<body onload="getname1();">
 <!--......client Registration Form........-->
 <div data-role="page" id="member_reg_new">
-<div data-role="panel" id="overlayPanel1" data-display="overlay" data-rel="back"> 
+<div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
-   <li data-icon="camera"><a onclick="getid();" style= font-size:0.9em;>QR Code</a></li>
-  <li data-icon="user"><a onclick="getid();" style= font-size:0.9em;>Member Id</a></li>
-  <li data-icon="phone"><a onclick="getid();" style= font-size:0.9em;>Mobile No</a></li>
+             <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
+        <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Client Profile</a></li>
     <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
@@ -293,18 +303,19 @@ window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+lo
 </div> 
 
    <div data-role="header" data-position="fixed">
-    <body onload="getname1();">
+
        <h3 style="text-align: center"><div id="name1"></div></h3>
            <a data-rel="external" rel="external"  role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
           <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext" >home</a>
-           </body> </div>
+
+            </div>
     <div data-role="main" class="ui-content">
-<br></br><div align="middle"><h3>Client Registration Form</h3></div>
-<form name="contact_form" class="contact_form" method="post">
+<br><div align="middle"><h3>Client Registration Form</h3></div>
+<form  name="contact_form" class="contact_form" method="post">
 <div class="ui-field-contain">
       <label for="sponsorId">Sponsor ID:</label>
-      <input type="text" name="sponsorId" id="sponsorId" onblur="check_id(this.value);" required> <div id="sponsorval"></div>
+      <input type="text" name="sponsorId" id="sponsorId"  readonly> <div id="sponsorval"></div>
       </div>
       <div class="ui-field-contain">
 
@@ -458,16 +469,71 @@ window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+lo
 
         <input id="confirm_password" type="password" onkeyup="checkPass(); return false;" name="confirm_password" maxlength="4" required>
 </div>
+<div class="ui-field-contain">
+      <label for="transaction_password"> Transaction Password :</label>
+
+        <input id="transaction_password" type="password" onclick="check(); return false;" name="transaction_password" maxlength="4" required>
+</div>
+<p>If you required different Transaction Password then enter it, otherwise your entered login password is stored as your transaction password.</p>
          <div class="ui-field-contain">
-<!--      <label> <input type="checkbox" value="A" onclick="check();" required>&nbsp;I agree the company's</label><a href="shop_terms.html?reload" style="underline:block"  data-rel="external" rel="external">Terms and conditions</a> -->
      <label> <input type="checkbox" value="A" onclick="check();" required>&nbsp;I agree the company's</label><a href="#terms" data-rel="popup"  data-transition="flip">Terms and conditions</a>
 </div>    
      <a  id="callAjax" data-transition="slide"  class="ui-btn" data-theme="b">Submit</a>
     </form>
 </div>
+
 <div data-role="popup" id="terms" class="ui-content">
 <a href="#member_reg_new" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
-      <p>Terms and Conditions</p>
+
+      <p><b>कंपनीचे नियम व अटी</b> </p>
+<p>१) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि. हि कंपनी भारत सरकार कंपनी कायदा १९५६ अंतर्गत                               जानेवारी २०१३ मध्ये नोदानिकृत कंपनी आहे. </p>
+<p>२)  गुरुप्रसाद मल्टी-ट्रेड  मार्केटिंग  प्रा. लि . कंपनीमद्धे १८ वर्षावरील  कोणत्याही भारतीय नागरिकांना  स्वतः च्या निर्णयाने कंपनीचे नियम व अटी  मान्य असल्यास कंपनीला आवश्यक असणारी ग्राहकांच्या संदर्भातील माहिती , जसे नाव , पत्ता ,भ्रमणध्वनी ( मोबाईल) क्रमांक , ओळखपत्र , पॅन कार्ड क्रमांक इत्यादी  माहिती असलेले  नोंदनि पत्रक (फॉर्म ) प्रत्यक्ष किंवा ऑनलाईन पूर्णपणे भरून स्वाक्षरी करेल , त्यानंतर त्याला कंपनीचा नोंदनीकृत ग्राहक क्रमांक देण्यात येईल. 
+</p>
+<p>
+३)  गुरुप्रसाद मल्टी-ट्रेड  मार्केटिंग  प्रा. लि . कंपनी आपल्या ग्राहकांना ग्राहक ओळख क्रमांक असलेले खास कार्ड देईल , त्या कार्डाचा  वापर कंपनीने उपलब्ध करून दिलेली उत्पादने खेरेदी  केल्यानंतर लॉयल्टी  कॅश  बॅक ऑफर चा फायदा मिळवण्याकरिता खरेदी करताना दाखवणे जरुरीचे ( बंधन कारक ) राहील, तसेच  या कार्डचा वापर इतर कोणत्याही कामासाठी व इतर कोणत्याही कंपनी व संस्थेमध्ये संदर्भ वस्तू अथवा ओळखपत्र  म्हणून करता येणार नाही  
+</p>
+<p>४)  गुरुप्रसाद मल्टी-ट्रेड  मार्केटिंग  प्रा. लि . कंपनीचे ग्राहक ओळख क्रमांक कार्ड , हे कंपनीच्या 
+स्वतःच्या मालकीचे ठेवण्याचा अधिकार राखून ठेवत आहे , हे कार्ड कंपनीचे  कामगार , अधिकारी, प्रतिनिधी असल्याचे ओळखपत्र नाही . हे कार्ड अशा कोणत्याही कारणाकरिता वापरता  येणार नाही . सदर कार्डाचा एखाद्या ग्राहकाने गैरवापर केल्यास त्या ग्राहकाची नोंदनी रद्द करण्याचा तसेच नियमित ग्राहक म्हणून देण्यात येणारे सर्व फायदे रद्द करण्याचा अधिकार कंपनी राखून ठेवत आहे . तसेच या कार्डाचा इतरत्र गैरवापर केल्याबद्दल कोणत्याही प्रकारची कायदेशीर कारवाही झाल्यास कंपनी जबाबदार राहणार नाही .  
+</p>
+<p>
+5) गुरुप्रसाद मल्टी-ट्रेड  मार्केटिंग  प्रा. लि . कंपनीचे कार्ड हे कोणत्याही व्यवहाराची पोचपावती
+ नाही ते ग्राहकांना मोफत देण्यात येणार आहे , त्यामुळे फक्त कार्ड धारक असल्याने लॉयल्टी  कॅश  बॅक मिळणार नाही. लॉयल्टीकॅश बॅक  ते त्यांनी केलेल्या खरेदी व कंपनीच्या विक्री आणि एकूण 
+व्यवसाय वृद्धीवर सर्वस्वी अवलंबून आहे व राहील . 
+</p>
+<p>
+6) गुरुप्रसाद  मल्टीट्रेड मार्केटिंग प्रा . लि. हि कंपनी कोणत्याही प्रकारची मल्टीलेवल मार्केटिंग (MLM) , नेटवर्क मार्केटिंग , डायरेक्ट मार्केटिंग ,मुदत ठेव योजना , मासिक बचत योजना , पैसे व्याजाने देणे-घेणे ,मोकळ्या जमिनीचे ( बिगर शेती) विक्री खरेदी व्यवहार अशा कोणत्याही प्रकारची  योजना राबवत नाही . 
+</p>
+<p>7)  गुरुप्रसाद  मल्टीट्रेड मार्केटिंग प्रा . लि च्या अधिकृत सही शिक्यानिशी असलेल्या लेखी  परिपत्रकाशिवाय प्रसिद्ध केलेली  कोणतीही लिखित अथवा तोंडी स्वरूपातील माहिती किवा पत्रक ग्राह्य धरले जाणार नाही . 
+</p>
+<p>8) गुरुप्रसाद  मल्टीट्रेड मार्केटिंग प्रा . लि हि कंपनी कोणत्याही प्रकारच्या उत्पादनाच्या खरेदी अथवा विक्री च्या मोबदल्यात , अथवा विक्रेय प्रवर्तनासाठी दिले जाणारे कमिशन , ठोस रकमेच्या स्वरुपात अथवा ठराविक मुदतीत देण्याचे कोणतेही लिखित अथवा तोंडी  आश्वासन देत नाही व दिलेले नाही . 
+</p>
+<p>9) नियमित ग्राहकांना दिला जाणारा मोबदला हा त्यांनी केलेल्या खरेदी  व  कंपनीच्या विक्री आणि एकूण व्यवसाय वृद्धीवर सर्वस्वी अवलंबून आहे व रहिल. 
+</p>
+<p>10) सदर संकल्पनेचा फायदा हा गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि .कंपनीच्या नोदानिकृत ग्राहकांनाच मिळू शकेल . तसेच ग्राहकांची नोंदणी  निशुल्क (मोफत ) करून घेण्यात येईल . ग्राहकांनी नोंदणी करणे हे पूर्णपणे त्यांच्या स्वतःच्या इच्छेवर अवलंबून असेल .
+</p>
+<p>11) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि.कंपनी अंतर्गत ग्राहक नोदनिकृत करून घेण्याचे सर्वाधिकार कंपनीकडे राहतील .
+</p>
+<p>12) कंपनीने उपलब्ध करून दिलेल्या कोणत्याही उत्पादनाचे व सेवेचे सदर ग्राहक कंपनीच्या व्यवसायवृद्धीसाठी दुसऱ्या ग्राहकांचा संदर्भ देवून त्यांना कंपनी बरोबर संलग्न करेल त्यावेळीपासून तो ग्राहक विक्रिय प्रवर्तक गणला जाईल . अशा प्रकारे कंपनीच्या विक्री वृद्धी प्रवर्तनासाठी ग्राहकाला कंपनीच्या  नियमानुसार कमिशन देण्यात येईल . 
+</p>
+<p>13)  गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि.कंपनी सध्या प्रचलित बाजारपेठेतील व्यवसाय करण्याच्या पद्धती जसे किरकोळ विक्री पद्धत व ऑन-लाईन पद्धत या प्रमाणे ग्राहकांना उत्पादने उपलब्ध करून देणार आहे . 
+</p>
+<p>14) कंपनीने उपलब्ध करून दिलेली कोणतीही वस्तू व उत्पादने खरेदी केल्यावरच सदर कंपनीचा  ग्राहक म्हणून मनाला जाईल .
+
+</p>
+<p>१५) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि. कंपनीने उपलब्ध करून दिलेल्या कोणत्याही उत्पादनाची कमीत कमी ५०० रुपये किंमतीपर्यंतची एकूण खरेदी महिन्याभरात करणे आवश्यक आहे , सदर ५०० रुपये व त्यावरील रकमेच्या उत्पादनाच्या खरेदीवर ५% ते १००% पर्यंत लॉयल्टी  कॅश  बॅक  ऑफर म्हणून देण्यात येईल .
+</p>
+<p>१६) ग्राहकांनी कंपनीने उपलब्ध करून दिलेल्या कोणत्याही उत्पादनाची  खरेदी केल्यानंतर लॉयल्टी  कॅश  बॅक किंवा लॉयल्टी  पोइंट  रिडीमशन यापैकी एका स्वरुपात देण्यात येईल , हि कॅशबॅक रक्कम ग्राहकांना त्यांनी केलेल्या खरेदी दिवसाच्या तारीख व वेळ या अनुक्रमांकाप्रमाणे देण्यात येईल , अशा प्रकारे  कॅशबॅक मिळण्याच्या पद्धतीला ग्राहक ग्राहक क्वालिफाइड  होणे  असे संबोधण्यात येईल . 
+</p>
+<p>१७) ग्राहकाला कॅशबॅक  व  विक्री प्रवर्तन कमिशन  लागू झाल्यानंतर शिल्लक रकमेतून १०% टीडीएस आणि २% अॅड्मीन  चार्ज वजा करून शिल्लक रक्कम ग्राहकांच्या बँक खात्यात थेट जमा करण्यात येईल. 
+</p>
+<p>18)  कंपनीने उपलब्ध करून दिलेले कोणतेही उत्पादन, वस्तू , सेवा हि अधिकतम  विक्री मुल्य सर्व करांसहित असलेल्या (M.R.P) किंमतीवर विक्री करेल, कोणत्याही प्रकारचे सेल , सवलत अथवा स्कीम  या प्रमाणे विक्री करणार नाही , तसेच कोणत्याही प्रवर्तकाला तसे करण्याची परवानगी नाही . 
+</p>
+<p>19) कंपनीने विक्रीकरता उपलब्धकारून दिलेल्या वस्तूंची व उत्पादनाची विक्री पश्चात सेवा , उत्पादनातील त्रुटी , उत्पादनाचा दर्जा , वॉरंटी  या सर्वांना व अशा तत्सम इतर गोष्टींना उत्पादक जबाबदार असतील .  
+</p>
+<p>20) ग्राहकांकडून घेण्यात येणारी त्यांच्या बद्दलची वैयत्यिक माहिती हि कंपनीच्या प्रशासकीय कामासाठी उपयोगात आणण्यात येईल. तसेच सदर माहिती मद्धे काही आवश्यक बदल करायचा असल्यास ग्राहकाला कंपनीच्या ऑनलाईन ग्राहक खात्यामध्ये जाऊन पाहू शकतो तसेच स्वतः बदल करू शकतो  
+</p>
+<p>21) कोणतीही पूर्वसूचना  न देता कंपनीच्या अटी आणि नियमांमध्ये बदल करण्याचा संपूर्ण अधिकार कंपनी स्वतःकडे राखून ठेवत आहे  . तसेच केलेले बदल कंपनी  ग्राहकांच्या वेळोवेळी  निदर्शनास आणून देण्यात येतील  .</p>
+<a href="#member_reg_new" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-bottom-right">Close</a>
     </div>
 </div>
     <!--......client Registration Form End........-->
