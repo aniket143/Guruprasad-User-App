@@ -41,11 +41,11 @@ function checkConnection(e) {
 	}
 function radio()
 {
-var shop=document.getElementById('shop').checked;
-var tieup=document.getElementById('tieup').checked;
+var client=document.getElementById('client').checked;
+var mob=document.getElementById('mob').checked;
 var id1=document.getElementById("myPopup");
 //alert(id1);
-if(shop==false && tieup==false)
+if(client==false && mob==false)
 {
 
 alert("Please Select Option First");
@@ -60,11 +60,11 @@ redirect();
 }
   function redirect()
 {
-var shop=document.getElementById('shop').checked;
-var tieup=document.getElementById('tieup').checked;
+var client=document.getElementById('client').checked;
+var mob=document.getElementById('mob').checked;
 var fname=document.getElementById('fname').value;
 var pwd=document.getElementById('pwd').value;
-if(shop==false && tieup==false)
+if(client==false && mob==false)
 {
 alert("Please Select Option First");
 document.getElementById('fname').value="";
@@ -79,7 +79,7 @@ document.getElementById('fname').value="";
 document.getElementById('pwd').value="";
 }
 else{
-   if(tieup==true)
+   if(mob==true)
     {
   $(function() {
   $("#callAjax2").ready(function() {
@@ -89,8 +89,8 @@ else{
 
           if(fname.length > 0 && pwd.length > 0 )
             { $.ajax({
-   // url: "tieup_login.php",
-     url: "http://shopnearn.co.in/mobileapp/tieup_login.php",
+   url: "mob_login.php",
+   //  url: "http://shopnearn.co.in/mobileapp/tieup_login.php",
            type     : 'GET',
              data: ({name: fname,name1:pwd}),
 
@@ -120,7 +120,8 @@ document.getElementById('pwd').value="";
     {
     localStorage.setItem("shopcode", encodeURIComponent(dd[1]));
     localStorage.setItem("shopname", dd[0]);
-    	window.location.href="home1.html?code="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+    localStorage.setItem("shopid", dd[2]);
+    	window.location.href="home.html?code="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
      }
       
        } 
@@ -140,8 +141,8 @@ $(function() {
 
           if(fname.length > 0 && pwd.length > 0)
             { $.ajax({
-      // url: "shop_login.php",
-      url: "http://shopnearn.co.in/mobileapp/shop_login.php",
+      url: "client_login.php",
+    //  url: "http://shopnearn.co.in/mobileapp/shop_login.php",
            type     : 'GET',
              data: ({name: fname,name1:pwd}),
 
@@ -169,7 +170,8 @@ document.getElementById('pwd').value="";
      if (typeof(Storage) != "undefined") {
     localStorage.setItem("shopcode", encodeURIComponent(ss[1]));
     localStorage.setItem("shopname", ss[0]);
-    	window.location.href="home.html?code="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
+        localStorage.setItem("shopid", ss[2]);
+    	window.location.href="home.html?code="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 
 }
        } }
@@ -188,7 +190,7 @@ document.addEventListener("backbutton", function() {
         function exitAppPopup() {
     navigator.notification.confirm(
           'Exit App?'
-          , function(button) {
+        , function(button) {
               if (button == 2) {
                   navigator.app.exitApp();
               } 
@@ -198,7 +200,6 @@ document.addEventListener("backbutton", function() {
     );  
     return false;
 }
-
 </script>
 </head>
 <body>
@@ -210,11 +211,11 @@ document.addEventListener("backbutton", function() {
   <div data-role="main" class="ui-content">
 <form method="post">
  <legend>Choose Your Type:</legend>
-        <label for="shop">Company Own Shop</label>
-        <input type="radio" name="type" id="shop" value="shop">
-        <label for="tieup">Company Tie-up Shop</label>
-        <input type="radio" name="type" id="tieup" value="tieup">	
-      <label for="fname">Shop Login Id:</label>
+        <label for="client">Client Id</label>
+        <input type="radio" name="type" id="client" value="client">
+        <label for="mob">Mobile No.</label>
+        <input type="radio" name="type" id="mob" value="mob">	
+      <label for="fname">Client Login Id:</label>
       <input type="text" name="fname" id="fname" onclick="radio();"  required>
       <label for="lname">Password:</label>
       <input type="password" name="pwd" id="pwd" onclick="radio();" required> 
