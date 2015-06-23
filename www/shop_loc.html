@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -8,8 +8,7 @@
 <script src="js/jquery-1.11.3.min.js"></script>
   <script src="js/jquery.mobile-1.4.5.js"></script>  
  <script src="jss/jquery-1.4.4.min.js"></script>  
-<script type="text/javascript">
-
+<script type="text/javascript" charset="utf-8">
 function checkConnection(e) {
 		if (doesConnectionExist() == true) {
 	//	alert("connection exists!");
@@ -39,181 +38,9 @@ function checkConnection(e) {
 	    	return false;
 	    }
 	}
-  function getname()
-  {
-  var queryString = new Array();
-
-          if (window.location.search.split('?').length > 1) {
-                var params = window.location.search.split('?')[1].split('&');
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i].split('=')[0];
-                    var value = decodeURIComponent(params[i].split('=')[1]);
-                    queryString[key] = value;
-                }
-            }
-
-var myArray=queryString[key].split('|');
-document.getElementById('name').innerHTML=localStorage.getItem("shopid");
-document.getElementById('name1').innerHTML=localStorage.getItem("shopid");
-document.getElementById('name2').innerHTML=localStorage.getItem("shopid");
-document.getElementById('name3').innerHTML=localStorage.getItem("shopid");
-document.getElementById('name4').innerHTML=localStorage.getItem("shopid");
-  }
-  
-  
-$(function() {
-      $("#callAjax").click(function() {
-            var theName = $.trim($("#theName").val());
-            if(theName=="")
-            {
-           alert("Please Enter Member Id");       
-            }
-            else{
-           if(theName.length > 0)
-            {$.ajax({
-    //url: "member_details.php",
-       url: "http://shopnearn.co.in/mobileapp/member_details.php",
-           type     : 'GET',
-              data: ({name: theName}),
-                  cache: false,
-                  dataType: "text",
-                  success: onSuccess
-                });}}});
-     $("#resultLog").ajaxError(function(event, request, settings, exception) {
-          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
-function onSuccess(data)
-        {
-        var queryString = new Array();
-
-          if (window.location.search.split('?').length > 1) {
-                var params = window.location.search.split('?')[1].split('&');
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i].split('=')[0];
-                    var value = decodeURIComponent(params[i].split('=')[1]);
-                    queryString[key] = value;
-                }
-            }
-var theName = $.trim($("#theName").val());
-if(theName=="")
-            {
-           alert("Please Enter Member Id");       
-            }
-            else{
-var myArray=queryString[key].split('|');
- $("#resultLog").html("Result: " + data);
-            		window.location.href="memberid2.html?member="+encodeURIComponent(data)+"|"+myArray[0]+"|"+myArray[1];
-
-        }}
-  });
- 
-  $(function() {
-     $("#callAjax1").click(function() {
-      
-            var theName1 = $.trim($("#theName1").val());
-           // alert(theName1);
-            if(theName1=="")
-            {
-           alert("Please Enter Mobile No.");       
-            }
-            else{
-          if(theName1.length > 0)
-            { $.ajax({
-    //  url: "mobno.php",
-      url: "http://shopnearn.co.in/mobileapp/mobno.php",
-           type     : 'GET',
-             data: ({name: theName1}),
-                  cache: false,
-                  dataType: "text",
-                  success: onSuccess
-                });}}});
-    $("#resultLog").ajaxError(function(event, request, settings, exception) {
-          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
-        });
-function onSuccess(data)
-        {
-       // alert(data);
-        var queryString = new Array();
-
-          if (window.location.search.split('?').length > 1) {
-                var params = window.location.search.split('?')[1].split('&');
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i].split('=')[0];
-                    var value = decodeURIComponent(params[i].split('=')[1]);
-                    queryString[key] = value;
-                }
-            }
-var theName1 = $.trim($("#theName1").val());
-if(theName1=="")
-            {
-           alert("Please Enter Mobile No.");       
-            }
-            else{
-var myArray=queryString[key].split('|');
-
-            $("#resultLog").html("Result: " + data);
-
-            	 			window.location.href="mobno1.html?member="+encodeURIComponent(data)+"|"+myArray[0]+"|"+myArray[1];
-
-        }}
-  });
-  
-     function check_id(id2)
-{
-	var res="theName="+id2;
-$.ajax({
-		    		 type: "GET",
-    				 //url:"memberid.php",
-    				 url: "http://shopnearn.co.in/mobileapp/memberid.php",
-    				 data:res,
-		    		 success: function(msg){
-		   			if(msg==1 )
-			     		{
-             //alert(msg);
-					       	$('#sponsorval').fadeIn(1000);
-			      				document.getElementById('sponsorval').innerHTML="Member Id is NOT available"; 
-		      					$('#sponsorval').fadeOut(3500);
-												document.getElementById('theName').value=""; 
-												document.getElementById('theName').focus();
-				    		}
-				else
-					     	{
-													//	document.getElementById('sponsorval').innerHTML=msg; 
-				    			}
-				   }
-				});
-			
-	} 
 	
-	 function check_id1(id3)
+function get()
 {
-	var res="theName1="+id3;
-//	alert(res);
-$.ajax({
-		    		 type: "GET",
-    				// url:"mob.php",
-    				 url: "http://shopnearn.co.in/mobileapp/mob.php",
-    				 data:res,
-		    		 success: function(msg){
-		   			if(msg==1 )
-			     		{
-             //alert(msg);
-					       	$('#sponsorval1').fadeIn(1000);
-			      				document.getElementById('sponsorval1').innerHTML="Mobile No. is NOT available"; 
-		      					$('#sponsorval1').fadeOut(3500);
-												document.getElementById('theName1').value=""; 
-												document.getElementById('theName1').focus();
-				    		}
-				else
-					     	{
-													//document.getElementById('sponsorval1').innerHTML=msg; 
-				    			}
-				   }
-				});
-			
-	} 
-	
-	function getname1()
-	{
 var queryString = new Array();
 
           if (window.location.search.split('?').length > 1) {
@@ -226,13 +53,137 @@ var queryString = new Array();
             }
 
 var myArray=queryString[key].split('|');
-	window.location.href="client_registration.html?member="+myArray[2];
-	}
-	
+    
+          document.getElementById('name1').innerHTML =myArray[2];
+     }
+     
+ function select_city() {
+       $.ajax({
+   url: "http://shopnearn.co.in/mobileapp/select_city.php",
+           type     : 'GET',
+             data: ({}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+       $("#resultLog").html("Result: " + data);
+      // alert(data);
+document.getElementById('city').innerHTML=data;
+        }
+ }
+  function select_shop() {
+       $.ajax({
+   url: "http://shopnearn.co.in/mobileapp/select_shop.php",
+           type     : 'GET',
+             data: ({}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+       $("#resultLog").html("Result: " + data);
+      // alert(data);
+document.getElementById('shop').innerHTML=data;
 
-       
+        }
+ }
  
-	function get6()
+ function get_pin() {
+ 	var uname=document.getElementById('pincode').value;
+ //	alert(uname);
+if(uname == '')
+{
+alert('please select the Pincode ..');
+	}
+else
+{
+       $.ajax({
+   url: "http://shopnearn.co.in/mobileapp/load_shop_pin.php",
+           type     : 'GET',
+             data: ({uname:uname}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });}
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+       $("#resultLog").html("Result: " + data);
+      // alert(data);
+document.getElementById('product').innerHTML=data;
+        }
+ }
+ function get_shop() {
+ 	var uname=document.getElementById('shop').value;
+if(uname == '')
+{
+alert('please select the shop name ..');
+	}
+else
+{
+       $.ajax({
+   url: "http://shopnearn.co.in/mobileapp/load_shop_name.php",
+           type     : 'GET',
+             data: ({uname:uname}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });}
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+       $("#resultLog").html("Result: " + data);
+      // alert(data);
+document.getElementById('product').innerHTML=data;
+        }
+ }
+ 
+ function get_prod() {
+ var uname=document.getElementById('city').value;
+if(uname == '')
+{
+alert('please select the city name..');
+	}
+else
+{
+       $.ajax({
+   url: "http://shopnearn.co.in/mobileapp/load_shop_city.php",
+           type     : 'GET',
+             data: ({uname:uname}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });}
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+       $("#resultLog").html("Result: " + data);
+      // alert(data);
+document.getElementById('product').innerHTML=data;
+        }
+ }
+ 
+ 
+function getid()
+{
+window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+}
+function get6()
 	{
 var queryString = new Array();
 
@@ -247,57 +198,53 @@ var queryString = new Array();
 
 var myArray=queryString[key].split('|');
 	window.location.href="shop_loc.html?member="+myArray[0]+"|"+myArray[1]+"|"+myArray[2];
-	}   
-	function getacc()
-	{
-var queryString = new Array();
-
-          if (window.location.search.split('?').length > 1) {
-                var params = window.location.search.split('?')[1].split('&');
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i].split('=')[0];
-                    var value = decodeURIComponent(params[i].split('=')[1]);
-                    queryString[key] = value;
-                }
-            }
-
-var myArray=queryString[key].split('|');
-	window.location.href="my_account.html?member="+myArray[0]+"|"+myArray[1]+"|"+myArray[2];
-	}   
-  </script>
-</head>
-<body>
-   <div data-role="page" id="option">
- <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
+	}  
+	
+</script>
+  </head>
+<body id="callAjax1">
+ <div data-role="page" id="pagetwo">
+<div data-role="panel" id="overlayPanel1" data-display="overlay" data-rel="back"> 
     <ul data-role="listview">
-     <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
-  <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Client Profile</a></li>
+         <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
+      <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Client Profile</a></li>
   <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
-     <li data-icon="info"><a href="faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+   <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
-
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
 </div> 
+
+ 
    <div data-role="header" data-position="fixed">
-   <body onload="getname();">
-         <h3 style="text-align: center"><div id="name"></div></h3>
+ <body onload="get();" > 
+
+         <h3 style="text-align: center"><div id="name1"></div></h3>
            <a data-rel="external" rel="external"  role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
-          <a href="index.html?reload" class="ui-btn ui-corner-all ui-icon-power ui-btn-icon-notext" data-rel="external" rel="external" >Logout</a>
-            </body>
-            </div>
-           
-<div data-role="controlgroup" data-type="vertical">
-    <a onclick="getacc();" class="ui-btn ui-icon-shop ui-btn-icon-top" >My Account </a><br>
-    </div>
-    <div data-role="controlgroup" data-type="vertical">
-    <a onclick="getname1();" class="ui-btn ui-icon-user ui-btn-icon-top">New Registration</a><br>
-  </div>
-  <div data-role="controlgroup" data-type="vertical">
-    <a  onclick="get6();" class="ui-btn ui-icon-location ui-btn-icon-top">Shop Locator</a>
-  </div>
- </div>
-     
-   </body>
-   </html>
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext" >home</a>
+</body>
+            </div>   
+	 <div class="ui-field-contain">
+      <label>CITY:</label>
+   <select  id="city"  name="city" onclick="select_city();" onchange="get_prod();" required>
+  <option value="" selected>----Select----</option> 
+  </select>
+
+		    </div>
+	 <div class="ui-field-contain">
+	 <label>Pincode:	    </label>
+	   <input  type="tel" maxlength="6" id="pincode" ><br>
+	    <input  class="ui-btn" value="Show" type="button" maxlength="6" id="" onclick="get_pin();">
+
+	    </div>
+	    	 <div class="ui-field-contain">
+	   <label>Shop Name:</label>
+	  <select  id="shop"  name="shop" onclick="select_shop();" onchange="get_shop();" required>
+ <option value="" selected>----Select----</option>
+</select>
+	    </div>
+	   <div style="background-color:white;" id="product"></div>
+</div> 
+</body>
+</html>
