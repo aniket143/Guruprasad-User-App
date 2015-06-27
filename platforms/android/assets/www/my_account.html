@@ -166,7 +166,7 @@ var myArray=queryString[key].split('|');
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
          <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
-    <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Client Profile</a></li>
+    <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">My Profile</a></li>
     <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
@@ -179,10 +179,10 @@ var myArray=queryString[key].split('|');
   <div data-role="main" class="ui-content">
   
 <div data-role="controlgroup" data-type="vertical">
-    <a onclick="get1();" class="ui-btn ui-icon-user ui-btn-icon-top"   style="border-color:orange">My Reference Client</a><br><br>
+    <a onclick="get1();" class="ui-btn ui-icon-user ui-btn-icon-top"   style="border-color:orange">My Reference Customer</a><br><br>
       </div>
       <div data-role="controlgroup" data-type="vertical">
-    <a onclick="get2();" class="ui-btn ui-icon-user ui-btn-icon-top" style="border-color:orange">Pending Purchase Client</a><br><br>
+    <a onclick="get2();" class="ui-btn ui-icon-user ui-btn-icon-top" style="border-color:orange">My Pending Purchase Customer</a><br><br>
     </div>    
     <div data-role="controlgroup" data-type="vertical">
     <a onclick="get5();" class="ui-btn ui-icon-user ui-btn-icon-top" style="border-color:orange">My Income Details</a><br><br>
@@ -191,8 +191,11 @@ var myArray=queryString[key].split('|');
     <a onclick="get4();" class="ui-btn ui-icon-user ui-btn-icon-top" style="border-color:orange">My Purchase Details</a><br><br>
   </div>
   <div data-role="controlgroup" data-type="vertical">
-    <a onclick="get3();" class="ui-btn ui-icon-user ui-btn-icon-top" style="border-color:orange">My Qualified Client</a>
+    <a onclick="get3();" class="ui-btn ui-icon-user ui-btn-icon-top" style="border-color:orange">My Qualified Customer</a><br><br>
   </div>
+  <div data-role="controlgroup" data-type="vertical">
+    <a href="profile.html?reload" class="ui-btn ui-icon-user ui-btn-icon-top"   style="border-color:orange" data-rel="external" rel="external">My Profile</a>
+      </div>
   </div>
   </div>
      
