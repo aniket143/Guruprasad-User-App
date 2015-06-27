@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	 <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">  
  <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />  
@@ -134,7 +134,14 @@ document.getElementById('name').innerHTML=localStorage.getItem("shopid");
 {
 window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 } 
-
+function letter()
+{
+window.location.href="welcome_letter.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+} 
+function profile()
+{
+window.location.href="my_profile.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+} 
 	function get6()
 	{
 var queryString = new Array();
@@ -151,6 +158,11 @@ var queryString = new Array();
 var myArray=queryString[key].split('|');
 	window.location.href="shop_loc.html?member="+myArray[0]+"|"+myArray[1]+"|"+myArray[2];
 	}   
+		function sponser()
+	{
+	window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+
+	} 
 </script>
 </head>
 <body>
@@ -166,6 +178,7 @@ var myArray=queryString[key].split('|');
   <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
          <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
+     <li data-icon="user"><a onclick="sponser();" style= font-size:0.9em; data-rel="external" rel="external">Sponser Details</a></li>
     <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Company Client Profile</a></li>
     <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
@@ -177,7 +190,12 @@ var myArray=queryString[key].split('|');
 
    
   <div data-role="main" class="ui-content">
-  
+  <div data-role="controlgroup" data-type="vertical">
+    <a onclick="letter();" class="ui-btn ui-icon-user ui-btn-icon-top"   style="border-color:orange">Welcome Letter</a><br><br>
+      </div>
+      <div data-role="controlgroup" data-type="vertical">
+    <a onclick="profile();" class="ui-btn ui-icon-user ui-btn-icon-top"   style="border-color:orange">My Profile</a><br><br>
+      </div>
 <div data-role="controlgroup" data-type="vertical">
     <a onclick="get1();" class="ui-btn ui-icon-user ui-btn-icon-top"   style="border-color:orange">My Reference Customer</a><br><br>
       </div>
@@ -193,9 +211,7 @@ var myArray=queryString[key].split('|');
   <div data-role="controlgroup" data-type="vertical">
     <a onclick="get3();" class="ui-btn ui-icon-user ui-btn-icon-top" style="border-color:orange">My Qualified Customer</a><br><br>
   </div>
-  <div data-role="controlgroup" data-type="vertical">
-    <a href="profile.html?reload" class="ui-btn ui-icon-user ui-btn-icon-top"   style="border-color:orange" data-rel="external" rel="external">My Profile</a>
-      </div>
+  
   </div>
   </div>
      
