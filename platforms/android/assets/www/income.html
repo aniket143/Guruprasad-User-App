@@ -70,8 +70,8 @@ var myArray=queryString[key].split('|');
 var myArray=queryString[key].split('|');
             var name1 = myArray[1];      
          $.ajax({
-    // url: "http://110.5.72.29/user_php_files/income.php",
-     url: "income.php",
+   //  url: "http://110.5.72.29/user_php_files/income.php",
+     url: "http://shopnearn.co.in/mobileapp/income.php",
            type     : 'GET',
              data: ({name: name1}),
                   cache: false,
@@ -119,10 +119,11 @@ var myArray=queryString[key].split('|');
  <div data-role="page" id="pagetwo">
 <div data-role="panel" id="overlayPanel1" data-display="overlay" data-rel="back"> 
     <ul data-role="listview">
-         <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
-      <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Company Client Profile</a></li>
+     <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
+  <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Company Client Profile</a></li>
+  <li data-icon="user"><a onclick="sponser();" style= font-size:0.9em; data-rel="external" rel="external">Sponser Details</a></li>
   <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
-   <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+     <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
   <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
