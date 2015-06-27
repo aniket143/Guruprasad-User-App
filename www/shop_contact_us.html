@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-		<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ <meta http-equiv="Content-Type" content="text/html;charset=UTF-8"> 
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">  
  <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />  
@@ -10,6 +10,38 @@
   <script src="js/jquery.mobile-1.4.5.js"></script>  
  <script src="jss/jquery-1.4.4.min.js"></script>  
 <script type="text/javascript" charset="utf-8">
+ $(function() {
+      $("#submit").click(function() {
+                 var address = $.trim($("#address").val());
+                 var name = $.trim($("#name").val());
+                 var enquiry = $.trim($("#enquiry").val());
+                 if(address==""||name==""||enquiry=="")
+                 {
+               alert("Please Enter All Details Properly...!!!");
+           document.getElementById('name').value="";                     
+           document.getElementById('address').value="";                     
+           document.getElementById('enquiry').value="";                     
+                 }
+                 else
+                 {
+       $.ajax({
+     url: "contact_us.php",
+           type     : 'GET',
+             data: ({address: address}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });}
+                });
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+      $("#resultLog").html("Result: " + data);
+        }
+  });
+
 function getid()
 {
 window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
