@@ -58,7 +58,8 @@ var myArray=queryString[key].split('|');
           document.getElementById('name1').innerHTML =myArray[2];
      }
      
- function select_city() {
+ $(function() {
+     $(document).ready(function() {
        $.ajax({
    url: "http://shopnearn.co.in/mobileapp/select_city.php",
            type     : 'GET',
@@ -76,8 +77,9 @@ function onSuccess(data)
       // alert(data);
 document.getElementById('city').innerHTML=data;
         }
- }
-  function select_shop() {
+});});
+ $(function() {
+     $(document).ready(function() {
        $.ajax({
    url: "http://shopnearn.co.in/mobileapp/select_shop.php",
            type     : 'GET',
@@ -96,7 +98,7 @@ function onSuccess(data)
 document.getElementById('shop').innerHTML=data;
 
         }
- }
+});});
  
  function get_pin() {
  	var uname=document.getElementById('pincode').value;
