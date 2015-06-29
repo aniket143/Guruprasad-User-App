@@ -99,7 +99,26 @@ document.getElementById('shop').innerHTML=data;
 
         }
 });});
- 
+ $(function() {
+     $(document).ready(function() {
+       $.ajax({
+   url: "http://shopnearn.co.in/mobileapp/select_area.php",
+           type     : 'GET',
+             data: ({}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+       $("#resultLog").html("Result: " + data);
+      //alert(data);
+document.getElementById('area').innerHTML=data;
+        }
+ });});
  function get_pin() {
  	var uname=document.getElementById('pincode').value;
  //	alert(uname);
@@ -181,6 +200,32 @@ document.getElementById('product').innerHTML=data;
         }
  }
  
+ function get_area() {
+ var uname=document.getElementById('area').value;
+if(uname == '')
+{
+alert('please select the area name..');
+	}
+else
+{
+       $.ajax({
+   url: "http://shopnearn.co.in/mobileapp/load_shop_area.php",
+           type     : 'GET',
+             data: ({uname:uname}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });}
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+       $("#resultLog").html("Result: " + data);
+      // alert(data);
+document.getElementById('product').innerHTML=data;
+        }
+ }
  
 function getid()
 {
@@ -235,9 +280,18 @@ function sponser()
 </body>
             </div>   
 	 <div class="ui-field-contain">
-      <label>City:</label>
+      <label>City/Town:</label>
    <select  id="city"  name="city" onclick="select_city();" onchange="get_prod();" required>
   <option value="" selected>----Select----</option> 
+  </select>
+
+		    </div>
+		    <div class="ui-field-contain">
+      <label>Area:</label>
+
+   <select  id="area"  name="area"   onclick="select_area();" onchange="get_area();" required>
+        <option>----Select----</option> 
+        
   </select>
 
 		    </div>
