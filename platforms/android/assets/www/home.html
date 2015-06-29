@@ -274,6 +274,11 @@ var myArray=queryString[key].split('|');
 	window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 
 	} 
+	function inbox()
+	{
+	window.location.href="inbox.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+
+	} 
   </script>
 </head>
 <body>
@@ -300,6 +305,9 @@ var myArray=queryString[key].split('|');
            
 <div data-role="controlgroup" data-type="vertical">
     <a onclick="getacc();" class="ui-btn ui-icon-shop ui-btn-icon-top" >My Account </a><br>
+    </div>
+    <div data-role="controlgroup" data-type="vertical">
+    <a onclick="inbox();" class="ui-btn ui-icon-mail ui-btn-icon-top" >Company Message Inbox</a><br>
     </div>
     <div data-role="controlgroup" data-type="vertical">
     <a onclick="getname1();" class="ui-btn ui-icon-user ui-btn-icon-top">New Registration</a><br>
