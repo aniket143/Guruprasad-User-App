@@ -12,42 +12,8 @@
 <script type="text/javascript">
 function message_detials(i)
 {
-            var Sr_no=i;
-//alert(Sr_no);
-var queryString = new Array();
-
-          if (window.location.search.split('?').length > 1) {
-                var params = window.location.search.split('?')[1].split('&');
-                for (var i = 0; i < params.length; i++) {
-                    var key = params[i].split('=')[0];
-                    var value = decodeURIComponent(params[i].split('=')[1]);
-                    queryString[key] = value;
-                }
-            }
-var myArray=queryString[key].split('|');
-            var name1 = myArray[1];
-
-            document.getElementById('name').innerHTML=myArray[1];
-       $.ajax({
-   url: "http://shopnearn.co.in/mobileapp/msg.php",
-  // url: "http://shopnearn.co.in/mobileapp/sponser_details.php",
-           type     : 'GET',
-             data: ({name: name1,Sr_no:Sr_no}),
-                  cache: false,
-                  dataType: "text",
-                  success: onSuccess
-                });
-
-    $("#resultLog").ajaxError(function(event, request, settings, exception) {
-          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
-        });
-function onSuccess(data)
-        {
-      //  alert(data);
-       $("#resultLog").html("Result: " + data);
-document.getElementById('inbox').innerHTML=data;
-        }
-
+        var Sr_no=i;         
+       	window.location.href="msg.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid")+'|'+Sr_no;
 }
  $(function() {
      $(document).ready(function() {
@@ -148,7 +114,6 @@ window.location.href="inbox.html?member="+localStorage.getItem("shopcode")+'|'+l
 
            </div>
 
- <a onclick="getback();" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon" >Back</a> 
 
  </div>
      
