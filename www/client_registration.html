@@ -54,8 +54,10 @@ function getname1()
                     queryString[key] = value;
                 }
             }
-document.getElementById('name1').innerHTML=queryString[key];
-document.getElementById('sponsorId').value=queryString[key];
+  var myArray=queryString[key].split('|');
+           // var name1 = myArray[2];         
+document.getElementById('name1').innerHTML=myArray[2];
+document.getElementById('sponsorId').value=myArray[2];
 }
 
  $(function() {
