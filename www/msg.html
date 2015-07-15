@@ -22,10 +22,10 @@ var queryString = new Array();
                 }
             }
 var myArray=queryString[key].split('|');
-            var name1 = myArray[1];
+            var name1 = myArray[2];
             var Sr_no = myArray[3];
 
-            document.getElementById('name').innerHTML=myArray[1];
+            document.getElementById('name').innerHTML=myArray[2];
 
        $.ajax({
    url: "http://shopnearn.co.in/mobileapp/msg.php",
