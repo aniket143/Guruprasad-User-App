@@ -226,7 +226,8 @@ var queryString = new Array();
             }
 
 var myArray=queryString[key].split('|');
-	window.location.href="client_registration.html?member="+myArray[1];
+		window.location.href="client_registration.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");	
+	
 	}
 	
 
