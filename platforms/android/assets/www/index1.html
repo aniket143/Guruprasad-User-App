@@ -180,16 +180,19 @@ document.getElementById('pwd').value="";
         }
 }
 }}
-if($("#page").is(".ui-page-active")){
-
-     navigator.app.exitApp();
-
-}
+function exitFromApp()
+ {
+ //alert('hello');
+   navigator.app.exitApp();
+ }
 </script>
 </head>
 <body>
 <!--.... ......First Page........ -->
 <div data-role="page" id="page" style="background-color:white;" >
+	<div data-role="header" data-position="fixed">
+          <a onclick="exitFromApp()" class="ui-btn ui-corner-all ui-icon-back ui-btn-icon-notext">Exit APP</a>
+           </div>
 <div data-role="main" class="ui-content">
 <div align="middle">
   <img src="guruprasad logo.png" class="ui-responsive" style="width:40%;hieght:40%;"> </img></div>
