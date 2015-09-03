@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -69,7 +70,7 @@ document.getElementById('sponsorId').value=myArray[2];
             var nameTitle = $.trim($("#nameTitle").val());
             var date = $.trim($("#date").val());
             var panNo = $.trim($("#panNo").val());
-            var cardid = $.trim($("#cardid").val());
+            //var cardid = $.trim($("#cardid").val());
             var address = $.trim($("#address").val());
             var city_town = $.trim($("#city_town").val());
             var district = $.trim($("#district").val());
@@ -78,20 +79,20 @@ document.getElementById('sponsorId').value=myArray[2];
             var phoneno = $.trim($("#phoneno").val());
             var mobileNo= $.trim($("#mobileNo").val());
             var email= $.trim($("#email").val());
-            var nomineeName= $.trim($("#nomineeName").val());
-            var relation= $.trim($("#relation").val());
-            var payableName= $.trim($("#payableName").val());
-            var bankName= $.trim($("#bankName").val());
-            var branch= $.trim($("#branch").val());
-            var city= $.trim($("#city").val());
-            var accountNo= $.trim($("#accountNo").val());
-            var accountType= $.trim($("#accountType").val());
-            var ifscCode= $.trim($("#ifscCode").val());
+            //var nomineeName= $.trim($("#nomineeName").val());
+           // var relation= $.trim($("#relation").val());
+            //var payableName= $.trim($("#payableName").val());
+            //var bankName= $.trim($("#bankName").val());
+            //var branch= $.trim($("#branch").val());
+            //var city= $.trim($("#city").val());
+            //var accountNo= $.trim($("#accountNo").val());
+           // var accountType= $.trim($("#accountType").val());
+           // var ifscCode= $.trim($("#ifscCode").val());
             var password= $.trim($("#password").val());
             var confirm_password= $.trim($("#confirm_password").val());
-            var transaction_password= $.trim($("#transaction_password").val());
+            //var transaction_password= $.trim($("#transaction_password").val());
             var ccode= $.trim($("#ccode").val());
-            if(applicateName=="" || ccode=="" || sponsorId==""||date==""||panNo==""||cardid==""||address==""||address==""||city_town==""||state==""||pincode==""||mobileNo==""||password==""||confirm_password=="")
+            if(applicateName=="" || ccode=="" || sponsorId==""||date==""||panNo==""||address==""||city_town==""||state==""||pincode==""||mobileNo==""||password==""||confirm_password=="")
            {
            alert("Please Enter All details properly!!");  
            document.getElementById('password').value="";         
@@ -103,7 +104,7 @@ document.getElementById('sponsorId').value=myArray[2];
    url: "http://shopnearn.co.in/mobileapp/client_entry.php?action=member",
        // url: "http://shopnearn.co.in/mobileapp/client_entry.php?action=member",
            type     : 'POST',
-              data: ({sponsorId:sponsorId,title:title,nameTitle:nameTitle,applicateName:applicateName,fatherName:fatherName,date:date,panNo:panNo,cardid:cardid,address:address,city_town:city_town,district:district,state:state,pincode:pincode,phoneno:phoneno,mobileNo:mobileNo,email:email,nomineeName:nomineeName,relation:relation,payableName:payableName,bankName:bankName,branch:branch,city:city,accountNo:accountNo,accountType:accountType,ifscCode:ifscCode,password:password,confirm_password:confirm_password,transaction_password:transaction_password}),
+              data: ({sponsorId:sponsorId,title:title,nameTitle:nameTitle,applicateName:applicateName,fatherName:fatherName,date:date,panNo:panNo,address:address,city_town:city_town,district:district,state:state,pincode:pincode,phoneno:phoneno,mobileNo:mobileNo,email:email,password:password,confirm_password:confirm_password}),
                   cache: false,
                   dataType: "text",
                   success: onSuccess
@@ -120,7 +121,7 @@ function onSuccess(data)
             var applicateName = $.trim($("#applicateName").val());
             var date = $.trim($("#date").val());
             var panNo = $.trim($("#panNo").val());
-            var cardid = $.trim($("#cardid").val());
+           // var cardid = $.trim($("#cardid").val());
             var address = $.trim($("#address").val());
             var city_town = $.trim($("#city_town").val());
             var state = $.trim($("#state").val());
@@ -128,7 +129,7 @@ function onSuccess(data)
             var mobileNo= $.trim($("#mobileNo").val());
             var password= $.trim($("#password").val());
             var confirm_password= $.trim($("#confirm_password").val());
- if(applicateName=="" || sponsorId==""||date==""||panNo==""||cardid==""||address==""||address==""||city_town==""||state==""||pincode==""||mobileNo==""||password==""||confirm_password=="")
+ if(applicateName=="" || sponsorId==""||date==""||panNo==""||address==""||city_town==""||state==""||pincode==""||mobileNo==""||password==""||confirm_password=="")
            {
            alert("Please Enter All details properly!!");  
            document.getElementById('password').value="";         
@@ -143,26 +144,25 @@ function onSuccess(data)
            document.getElementById('fatherName').value="";         
            document.getElementById('date').value="";         
            document.getElementById('panNo').value="";         
-           document.getElementById('cardid').value="";         
+          // document.getElementById('cardid').value="";         
            document.getElementById('state').value="";         
            document.getElementById('address').value="";         
            document.getElementById('mobileNo').value="";         
            document.getElementById('email').value="";         
            document.getElementById('ccode').value="";         
-           document.getElementById('nomineeName').value="";         
-           document.getElementById('relation').value="";         
-           document.getElementById('payableName').value="";         
+          // document.getElementById('nomineeName').value="";         
+          // document.getElementById('relation').value="";         
+          // document.getElementById('payableName').value="";         
            document.getElementById('city_town').value="";         
            document.getElementById('pincode').value="";         
            document.getElementById('phoneno').value="";         
-           document.getElementById('branch').value="";         
-           document.getElementById('city').value="";         
-           document.getElementById('ifscCode').value="";         
-           document.getElementById('accountNo').value="";         
-           document.getElementById('bankName').value="";         
-           document.getElementById('accountType').value="";         
+          // document.getElementById('branch').value="";         
+          // document.getElementById('city').value="";         
+           //document.getElementById('ifscCode').value="";         
+          // document.getElementById('accountNo').value="";         
+           //document.getElementById('bankName').value="";         
+          // document.getElementById('accountType').value="";         
            document.getElementById('district').value="";         
-         
           }
           }
   });
@@ -381,7 +381,7 @@ function onSuccess(data)
 <!--......client Registration Form........-->
 <div data-role="page" id="member_reg_new">
 <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
-    <ul data-role="listview">
+   <ul data-role="listview">
      <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
   <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Client Profile</a></li>
   <li data-icon="user"><a onclick="sponser();" style= font-size:0.9em; data-rel="external" rel="external">Sales Promoter's Details</a></li>
@@ -435,10 +435,10 @@ function onSuccess(data)
       <label for="panNo">Pan No:</label>
       <input type="text" name="panNo" id="panNo" maxlength="10" required>
       </div>
-         <div class="ui-field-contain">
+         <!--<div class="ui-field-contain">
       <label for="cardid">Card ID:</label>
       <input type="text" name="cardid" id="cardid" maxlength="16" required>
-      </div>
+      </div>-->
          <div class="ui-field-contain">
       <label for="address">Address:</label>
       <textarea name="address" id="address"  required></textarea>
@@ -498,7 +498,7 @@ function onSuccess(data)
  <input id="email" type="email" name="email"  onblur="email_add(this.value);" onclick="checkcode();" required><div id="emailval">
     </div>
 </div>
-         <div class="ui-field-contain">      
+         <!--<div class="ui-field-contain">      
       <label for="nomineeName">  Nominee Name :</label>
    <input  id="nomineeName" type="text" name="nomineeName" onkeypress="return lettersOnly(event)" >
 </div>
@@ -538,7 +538,7 @@ function onSuccess(data)
 				<option value="THE TAMIL NADU STATE APEX CO-OPERATIVE BANK LTD">THE TAMIL NADU STATE APEX CO-OPERATIVE BANK LTD</option>
 				<option value="UCO BANK">UCO BANK</option><option value="UNION BANK OF INDIA">UNION BANK OF INDIA</option><option value="VIJAYA BANK">VIJAYA BANK</option>
 				<option value="WEST BENGAL STATE CO-OP BANK LTD">WEST BENGAL STATE CO-OP BANK LTD</option><option value="YES BANK LTD">YES BANK LTD</option>
-                  <option value="THE MAHANAGAR CO-OPERATIVE BANK  LTD.">THE MAHANAGAR CO-OPERATIVE BANK  LTD.</option>
+                                 <option value="THE MAHANAGAR CO-OPERATIVE BANK  LTD.">THE MAHANAGAR CO-OPERATIVE BANK  LTD.</option>
             </select>
 </div>
          <div class="ui-field-contain">           
@@ -564,23 +564,24 @@ function onSuccess(data)
          <div class="ui-field-contain">     
      <label for="ifscCode"> IFSC Code No :</label>
   <input  id="ifscCode" type="text" name="ifscCode"  maxlength="11" >
-</div>
+</div>-->
          <div class="ui-field-contain">       
         <label for="password">Password :</label>
 
-        <input  id="password" type="password" name="password" placeholder="4 digit number only" title="4 digit number only" maxlength="4" required>
+        <input  id="password" type="password" name="password" placeholder="password 4 digit number only" title="password 4 digit number only" maxlength="4" required>
      </div>
          <div class="ui-field-contain">
       <label for="confirm_password"> Confirm Password :</label>
 
-        <input id="confirm_password" type="password" onkeyup="checkPass(); return false;" name="confirm_password" placeholder="4 digit number only" title="4 digit number only" maxlength="4" required>
+        <input id="confirm_password" type="password" onkeyup="checkPass(); return false;" name="confirm_password" placeholder="password 4 digit number only" title="password 4 digit number only" maxlength="4" required>
 </div>
-<div class="ui-field-contain">
+<!--<div class="ui-field-contain">
       <label for="transaction_password"> Transaction Password :</label>
 
         <input id="transaction_password" type="password" onclick="check(); return false;" name="transaction_password" placeholder="4 digit number only" title="4 digit number only" maxlength="4" required>
 </div>
 <p>If you required different Transaction Password then enter it, otherwise your entered login password is stored as your transaction password.</p>
+    -->    
          <div class="ui-field-contain">
      <label> <input type="checkbox" value="A" onclick="check();" required>&nbsp; I agree the companies T&C</label><a href="#terms" data-rel="popup"  data-transition="flip">Terms and conditions</a>
 </div>    
