@@ -61,7 +61,7 @@ var myArray=queryString[key].split('|');
  $(function() {
      $(document).ready(function() {
        $.ajax({
-   url: "http://shopnearn.co.in/mobileapp/select_city.php",
+  url: "http://shopnearn.co.in/mobileapp/select_city.php",
            type     : 'GET',
              data: ({}),
                   cache: false,
@@ -78,10 +78,32 @@ function onSuccess(data)
 document.getElementById('city').innerHTML=data;
         }
 });});
+
+$(function() {
+     $(document).ready(function() {
+       $.ajax({
+    url: "http://shopnearn.co.in/mobileapp/select_categary.php",
+           type     : 'GET',
+             data: ({}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+       $("#resultLog").html("Result: " + data);
+      // alert(data);
+document.getElementById('categary').innerHTML=data;
+        }
+});});
+
   $(function() {
      $(document).ready(function() {
        $.ajax({
-   url: "http://shopnearn.co.in/mobileapp/select_shop.php",
+    url: "http://shopnearn.co.in/mobileapp/select_shop.php",
            type     : 'GET',
              data: ({}),
                   cache: false,
@@ -102,7 +124,7 @@ document.getElementById('shop').innerHTML=data;
  $(function() {
      $(document).ready(function() {
        $.ajax({
-   url: "http://shopnearn.co.in/mobileapp/select_area.php",
+    url: "http://shopnearn.co.in/mobileapp/select_area.php",
            type     : 'GET',
              data: ({}),
                   cache: false,
@@ -129,7 +151,7 @@ alert('please select the Pincode ..');
 else
 {
        $.ajax({
-   url: "http://shopnearn.co.in/mobileapp/load_shop_pin.php",
+    url: "http://shopnearn.co.in/mobileapp/load_shop_pin.php",
            type     : 'GET',
              data: ({uname:uname}),
                   cache: false,
@@ -155,7 +177,7 @@ alert('please select the shop name ..');
 else
 {
        $.ajax({
-   url: "http://shopnearn.co.in/mobileapp/load_shop_name.php",
+    url: "http://shopnearn.co.in/mobileapp/load_shop_name.php",
            type     : 'GET',
              data: ({uname:uname}),
                   cache: false,
@@ -172,7 +194,32 @@ function onSuccess(data)
 document.getElementById('product').innerHTML=data;
         }
  }
- 
+ function get_categary() {
+ var categary=document.getElementById('categary').value;
+if(categary == '')
+{
+alert('please select the categary name..');
+	}
+else
+{
+       $.ajax({
+   url: "http://shopnearn.co.in/mobileapp/load_shop_categary.php",
+           type     : 'GET',
+             data: ({categary:categary}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });}
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+		function onSuccess(data)
+        {
+       $("#resultLog").html("Result: " + data);
+      // alert(data);
+document.getElementById('product').innerHTML=data;
+        }
+ }
  function get_prod() {
  var uname=document.getElementById('city').value;
 if(uname == '')
@@ -182,7 +229,7 @@ alert('please select the city name..');
 else
 {
        $.ajax({
-   url: "http://shopnearn.co.in/mobileapp/load_shop_city.php",
+    url: "http://shopnearn.co.in/mobileapp/load_shop_city.php",
            type     : 'GET',
              data: ({uname:uname}),
                   cache: false,
@@ -209,7 +256,7 @@ alert('please select the area name..');
 else
 {
        $.ajax({
-   url: "http://shopnearn.co.in/mobileapp/load_shop_area.php",
+    url: "http://shopnearn.co.in/mobileapp/load_shop_area.php",
            type     : 'GET',
              data: ({uname:uname}),
                   cache: false,
@@ -278,7 +325,14 @@ function sponser()
           </a>         
           <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext" >home</a>
 </body>
-            </div>   
+            </div> 
+       <div class="ui-field-contain">
+      <label>Shop Categary:</label>
+   <select  id="categary"  name="categary" onclick="select_categary();" onchange="get_categary();" required>
+  <option value="" selected>----Select----</option> 
+  </select>
+
+		    </div>			
 	 <div class="ui-field-contain">
       <label>City/Town:</label>
    <select  id="city"  name="city" onclick="select_city();" onchange="get_prod();" required>
@@ -311,3 +365,4 @@ function sponser()
 </div> 
 </body>
 </html>
+
