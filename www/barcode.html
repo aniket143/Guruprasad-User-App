@@ -87,13 +87,7 @@ function barcode()
 	window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 
 	} 
-	function save2()
- {
- window.open(canvas.toDataURL('qrcode'));
- var gh=(canvas.toDataURL('png'));
- alert("converted");
-
- }
+	
 
   </script>
   
@@ -161,7 +155,7 @@ img {
 
       updateQRCode(localStorage.getItem("shopid"));
     </script>
-	<input type="button" name="save2" value="save image" onClick="save2();"></p>
+	
 	</div>
 	
   </body>
