@@ -59,6 +59,11 @@ function get6()
 	window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 
 	} 
+	function barcode()
+	{
+	window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+
+	} 
 </script>
         </head>
         <style>
@@ -81,7 +86,8 @@ tr:nth-child(even) {
   <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
-  <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
+   <li data-icon="user"><a onclick="barcode();" style= font-size:0.9em; data-rel="external" rel="external">BARCODE</a></li>
+	    <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
 </div> 
    <div data-role="header" data-position="fixed">
