@@ -27,7 +27,7 @@ var myArray=queryString[key].split('|');
             var name1 = myArray[2];
             document.getElementById('name').innerHTML=myArray[2];
        $.ajax({
-   url: "http://localhost/mobileapp/barcode_details.php",
+   url: "http://localhost/mobileapp/sponser_details.php",
            type     : 'GET',
              data: ({name: name1}),
                   cache: false,
