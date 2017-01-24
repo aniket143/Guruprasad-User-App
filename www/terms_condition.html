@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">  
+ <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />  
+ <link rel="stylesheet" href="css/themes/my-custom-theme.css" />
+<script src="js/jquery-1.11.3.min.js"></script>
+ <script src="js/jquery.mobile-1.4.5.js"></script>  
+ <script src="jss/jquery-1.4.4.min.js"></script>  
+<script type="text/javascript"> 
+function getid()
+{
+window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+}
+function get6()
+	{
+	window.location.href="shop_loc.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+	}   
+		function sponser()
+	{
+	window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+
+	} 
+	function barcode()
+	{
+	window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+
+	} 
+</script>
+</head>
+<body>
+<div data-role="page" id="pageone" style="background-color:white;">
+  <div data-role="panel" id="overlayPanel1" data-display="overlay" data-rel="back"> 
+    <ul data-role="listview">
+         <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
+     <li data-icon="user"><a onclick="sponser();" style= font-size:0.9em; data-rel="external" rel="external">Sales Promoter's Details</a></li>
+    <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Company Client Profile</a></li>
+    <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
+     <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+  <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
+<li data-icon="user"><a onclick="barcode();" style= font-size:0.9em; data-rel="external" rel="external">BARCODE</a></li>
+  <li data-icon="info"><a href="terms_condition.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Terms and Condition</a></li>
+    <li data-icon="info"><a href="privacy_policy.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Privacy Policy</a></li>
+  <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
+</ul>  
+</div> 
+   <div data-role="header" data-position="fixed">
+  <h3 style="text-align: center">Terms and Condition</h3>
+           <a data-rel="external" rel="external"  role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
+          </a>         
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext">home</a>
+   </div>   
+ <p style="padding-left: 3%; padding-right: 3%;">
+<label style="font-family:'Bookman Old Style',serif"><b>१) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि. हि कंपनी भारत सरकार कंपनी कायदा १९५६ अंतर्गत   जानेवारी २०१३ मध्ये नोंदणीकृत कंपनी आहे.  </b></label>
+ 
+<label style="font-family:'Bookman Old Style',serif"><b>२) गुरुप्रसाद मल्टी-ट्रेड  मार्केटिंग  प्रा. लि . कंपनीमद्धे १८ वर्षावरील  कोणत्याही भारतीय नागरिकांना  स्वतः च्या निर्णयाने कंपनीचे नियम व अटी  मान्य असल्यास  कंपनीला आवश्यक  असणारी ग्राहकांच्या संदर्भातील माहिती , जसे नाव , पत्ता ,भ्रमणध्वनी ( मोबाईल)क्रमांक , ओळखपत्र , पॅन कार्ड क्रमांक इत्यादी  माहिती असलेले  नोंदनि पत्रक (फॉर्म ) प्रत्यक्ष किंवा ऑनलाईन पूर्णपणे भरून स्वाक्षरी करेल ,त्यानंतर त्याला कंपनीचा नोंदणीकृत ग्राहक क्रमांक देण्यात येईल.ग्राहकांची नोंदणी निशुल्क (मोफत ) करून घेण्यात येईल .
+ ग्राहकांनी नोंदणी करणे हे पूर्णपणे   त्यांच्या स्वतःच्या इच्छेवर अवलंबून असेल . </b></label>
+ 
+ <label style="font-family:'Bookman Old Style',serif"><b>३) गुरुप्रसाद मल्टी-ट्रेड  मार्केटिंग  प्रा. लि . कंपनी आपल्या ग्राहकांना ग्राहक ओळख क्रमांक असलेले खास कार्ड देईल . या कार्डचा वापर कंपनीशी सल्लग्न असलेल्या दुकानदार व सेवापुरावठादार  यांच्याकडून  उत्पादने  व  सेवा विकत घेण्याकरिता करावयाचा आहे . कंपनीने  उपलब्ध करून दिलेली  उत्पादने खेरेदी  केल्यानंतर , ती खरेदी लॉयल्टी  रिवार्ड पोइंट्स ऑफर अंतर्गत नोंद करण्यासाठी हे कार्ड गरजेचे आहे. 
+ तसेच  या कार्डचा वापर इतर कोणत्याही कामासाठी व इतर कोणत्याही कंपनी व संस्थेमध्ये संदर्भ  वस्तू अथवा ओळखपत्र  म्हणून वापर करता येणार  नाही. सदर कार्ड गहाळ झाल्यास किंवा तुटल्यास  नवीन कार्ड देण्यासाठी रुपये ५०/- आकारण्यात  येतील .   </b></label>
+                                                                                        
+<label style="font-family:'Bookman Old Style',serif"><b>४) दुकानामद्धे प्रवेश केल्याबरोबर दुकानदारास गुरुप्रसाद्चे कार्ड दाखवणे बंदनकारक राहील .ग्राहकांनी उत्पादने खरेदी केलेल्या एकूण  बिलाची रक्कम टाय- अप शॉप अॅप्लिकेशनमद्धे करण्यात येईल. एकूण बिलाच्या रकमेची विभागणी करून नोंद केली जाणार नाही तसेच त्यासाठी दुकानदाराकडे आग्रह करू नये . </b></label>
+ 
+<label style="font-family:'Bookman Old Style',serif"><b>५) जर ग्राहकांनी गुरुप्रसाद्चे कार्ड दुकानदारास दाखवल्यानंतर उत्पादने खरेदी करण्यायोग्य वाटत नसल्यास उदा. उत्पादनाची किंमत , दर्जा यांच्यामध्ये तफावत आढळल्यास आपण खरेदी व्यवहारास नकार देऊ शकता .केवळ गुरुप्रसादचे कार्ड दाखवल्याने वस्तू खरेदि  करणे बंधनकारक नाही . खरेदी करणे किंवा न करण्याचा पूर्ण अधिकार ग्राहकास आहे . </b></label>
+ 
+<label style="font-family:'Bookman Old Style',serif"><b>६) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा. लि . कंपनीचे ग्राहक ओळख क्रमांक कार्ड ,हे कंपनी स्वतःच्या मालकीचे ठेवण्याचा अधिकार राखून ठेवत आहे. हे कार्ड कंपनीचे कामगार , अधिकारी, प्रतिनिधी असल्याचे ओळखपत्र नाही. हे कार्ड अशा कोणत्याही कारणाकरिता वापरता येणार नाही . सदर कार्डाचा एखाद्या ग्राहकाने गैरवापर केल्यास त्या ग्राहकाची नोंदणी रद्द करण्याचा तसेच नियमित ग्राहक म्हणून देण्यात येणारे सर्व फायदे स्तगीत करण्याचा अधिकार कंपनी स्वतःकडे राखून ठेवत आहे.तसेच या कार्डचा इतरत्र गैरवापर केल्याबद्दल कोणत्याही प्रकारची कायदेशीर कारवाही झाल्यास कंपनी जबाबदार राहणार नाही .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>७) ग्राहकांनी सभासद कार्ड मिळाल्यानंतर त्याचा काळजीपूर्वक वापर करावा , स्वतःच्या ID आणि पासवर्ड ची नोंद जाणीवपूर्वक लक्षात ठेवावी . ग्राहकांनी  दुकानदाराला पैसे देऊन व्यवहार पूर्ण केल्यावर   आपल्या  व्यवहाराची नोंद दुकानदाराने  योग्यरीत्या कंपनी मोबाईल अॅप्लिकेशन मद्धे  केल्याची  खात्री करावी . उदा . आपले नाव , आपली खरेदी रक्कम बरोबर  आहे का ? आपल्या  मोबाईलमध्ये  GPMMPL या नावाने बिल मेसेज आला आहे का? ते पाहावे . शक्य असल्यास प्रत्येक खरेदीच्या  वेळी दुकानदाराकडून बिलाची मागणी करावी . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>८) दुकानदाराने ग्राहकांना , मोबाईल अॅप मद्धे नोंद करण्यासंदर्भात काही कारणे सांगितल्यास जसे इंटरनेट बंद  आहे , आत्ता मोबाईल दुकानात नाही , मालक दुकानात नाहीत , किंवा इतर काही कारण सांगितल्यास त्या व्यवहाराची नोंद गुरुप्रसादच्या  नोंद वहीत करण्यास सांगून त्यावर स्वाक्षरी करावी , तसे करण्यास दुकानदारास आग्रह करावा . वारंवार दुकानदाराकडून व्यवहाराची नोंद करण्यास टाळाटाळ होत असल्यास त्याबद्दल  गुरुप्रसाद  कंपनीकडे  माहिती कळवावी व कंपनीच्या सूचनेनुसार पुढील खरेदी करावी . जर एखाद्या व्यवहाराचा मेसेज आपल्या पर्यंत आला नसल्यास , लगेचच  स्वतःच्या  अॅप मधील  खात्यामध्ये माय परचेस डिटेल ( MY PURCHASE DETAIL) मद्धे त्याची नोंद झाली  आहे का  त्याची खात्री करावी . 
+तसे नसल्यास दुकानदाराला नोंद करण्याची सूचना करावी . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>९) तुमच्या व कंपनीच्या व्यवहारासंदर्भातील सर्व आवश्यक माहिती मोबाईल अॅप मद्धे दिलेली आहे . ती माहितीआपण २४/७ कधीही इंटरनेटद्वारे मोबाईल अॅप मध्ये पाहू शकता .ग्राहकांचे जाणीवपूर्वक सहकार्य आणि खरेदी सर्वांच्या हिताचे आहे .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१०) गुरुप्रसाद मल्टीट्रेड मार्केटिंग  प्रा. लि .कंपनीचे कार्ड हे कोणत्याही व्यवहाराची पोचपावती नाही ते ग्राहकांना मोफत देण्यात येणार आहे ,त्यामुळे फक्त कार्ड धारक असल्याने लॉयल्टी कॅश बॅक मिळणार नाही. नियमित ग्राहकांना दिली जाणारी लॉयल्टीकॅश बॅक हि , त्यांनी केलेल्या उत्पादन  खरेदी व कंपनीच्या विक्री आणि एकूण व्यवसाय वृद्धीवर सर्वस्वी अवलंबून आहे व राहील . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>११) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि. हि कंपनी कोणत्याही प्रकारची मल्टीलेवल मार्केटिंग (MLM),नेटवर्क मार्केटिंग , डायरेक्ट मार्केटिंग , मुदत ठेव योजना ,मासिक बचत योजना ,पैसे व्याजाने देणे-घेणे ,मोकळ्या जमिनीचे ( बिगर शेती) विक्री खरेदी व्यवहार अशा कोणत्याही प्रकारची योजना राबवत नाही .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१२) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि च्या अधिकृत सही शिक्यानिशी असलेल्या लेखी परिपत्रकाशिवाय प्रसिद्ध केलेली  कोणतीही लिखित अथवा तोंडी स्वरूपातील माहिती किवा पत्रक ग्राह्य धरले  जाणार नाही .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१३) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि हि कंपनी कोणत्याही प्रकारच्या उत्पादनाच्या खरेदी अथवा विक्री च्या मोबदल्यात , अथवा विक्रेय प्रवर्तनासाठी दिले जाणारे कमिशन , ठोस रकमेच्या स्वरुपात अथवा ठराविक मुदतीत देण्याचे कोणतेही लिखित अथवा तोंडी आश्वासन देत नाही व दिलेले नाही . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१४) सदर संकल्पनेचा फायदा हा गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि .कंपनीच्या नोंदणीकृत ग्राहकांनाच मिळू शकेल . गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि.कंपनी अंतर्गत ग्राहक नोंदणीकृत करून घेण्याचे सर्वाधिकार कंपनीकडे राहतील . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१५) कंपनीशी सल्लग्न दुकानदार अथवा व्यावसायिक यांच्या तर्फे उत्पादन किंवा सेवा खरेदीवर सुट , सवलत , माफक दरात विक्री करणे हे पूर्णपणे त्या दुकानदार अथवा व्यावसायिक यांच्यावर  अवलंबून असेल. </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१६) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि.कंपनी सध्या प्रचलित बाजारपेठेतील व्यवसाय करण्याच्या पद्धती जसे किरकोळ विक्री पद्धत व ऑन-लाईन पद्धत या प्रमाणे ग्राहकांना उत्पादने उपलब्ध करून देणार आहे . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१७) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि. कंपनीने उपलब्ध करून दिलेल्या कोणत्याही उत्पादनाची  कमीत कमी ५०० रुपये किंमतीपर्यंतची एकूण खरेदी महिन्याभरात करणे आवश्यक आहे ,सदर ५०० रुपये व त्यावरील रकमेच्या उत्पादनाच्या खरेदीवर सर्वसाधारण  आकर्षक  लॉयल्टी रिवार्ड पोइंट्स ऑफर म्हणून देण्यात येईल . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१८) ग्राहकांनी कंपनीने उपलब्ध करून दिलेल्या कोणत्याही उत्पादनाची  खरेदी केल्यानंतर देण्यात येणारी लॉयल्टी हि  कॅश बॅक किंवा लॉयल्टी रिवार्ड  पोइंट  रिडीमशन  यापैकी एका स्वरुपात देण्यात येईल , हि रिवार्ड पोइंट्स रक्कम  ग्राहकांना  त्यांनी उत्पादने खरेदी  केलेल्या दिवसाच्या  तारीख  व वेळ  या अनुक्रमांकाप्रमाणे देण्यात येईल ,अशा प्रकारे  रिवार्ड पोइंट्स मिळण्याच्या पद्धतीला  ग्राहक  क्वालिफाइड  होणे  असे  संबोधण्यात येईल .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१९) ग्राहकाला 100 रिवार्ड पोइंट्स लागू झाल्यानंतर सल्लग्न दुकानामद्धे खरेदी करताना रिवार्ड पॉइंट रक्कम म्हणून वापरता येईल अथवा रिवार्ड पॉइंट रक्कम  ५०००/- रुपये पेक्षा अधिक झाल्यास TDS वजा करून  ग्राहकांच्या बँक खात्यात थेट जमा करण्यात येईल.  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>२०) कंपनीने उपलब्ध करून दिलेले कोणतेही उत्पादन, वस्तू , सेवा हि अधिकतम विक्री मुल्य सर्व करांसहित असलेल्या (M.R.P) किंमतीवर विक्री करेल, कोणत्याही प्रकारचे सेल , सवलत अथवा स्कीम या प्रमाणे विक्री करणार नाही . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>२१) कंपनीने विक्रीकरता उपलब्धकारून दिलेल्या वस्तूंची व उत्पादनाची विक्री पश्चात सेवा , उत्पादनातील त्रुटी , उत्पादनाचा दर्जा , वॉरंटी  या सर्वांना व  अशा तत्सम इतर गोष्टींना उत्पादक जबाबदार  असतील .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>२२) ग्राहकांकडून घेण्यात येणारी त्यांच्या बद्दलची वैयत्यिक माहिती हि कंपनीच्या प्रशासकीय  कामासाठी उपयोगात आणण्यात येईल.तसेच सदर माहिती मद्धे काही आवश्यक बदल करायचा  असल्यास ग्राहकाला कंपनीच्या ऑनलाईन ग्राहक खात्यामध्ये जाऊन पाहू शकतो तसेच कंपनीकडून बदल करून घेऊ शकतो  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>२३) कोणतीही पूर्वसूचना  न देता कंपनीच्या अटी आणि नियमांमध्ये बदल करण्याचा संपूर्ण अधिकार  कंपनी स्वतःकडे राखून ठेवत आहे  . तसेच केलेले बदल कंपनी  ग्राहकांच्या वेळोवेळी  निदर्शनास आणून देण्यात येतील . </b></label>
+
+</p>
+</div> 
+</body>
+</html>
