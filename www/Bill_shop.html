@@ -24,7 +24,7 @@ amount1();
 	function doesConnectionExist() {
 	    var xhr = new XMLHttpRequest();
 //var file = "member_details.php";
-	var file = "http://localhost/mobileapp/member_details.php";
+	var file = "http://shopnearn.co.in/mobileapp/member_details.php";
 		var randomNum = Math.round(Math.random() * 10000);
 		
 		xhr.open('HEAD', file + "?rand=" + randomNum, false);
@@ -86,7 +86,7 @@ var myArray=queryString[key].split('|');
 
          $.ajax({
     // url: "http://shopnearn.co.in/mobileapp/view_tbill.php",
-	 url: "http://localhost/mobileapp/my_purchase.php",
+	 url: "http://shopnearn.co.in/mobileapp/my_purchase.php",
     // url: "view_tbill.php",
 
            type     : 'GET',
