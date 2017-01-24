@@ -168,9 +168,12 @@ function show_div(id)
 	}
 	
 	
-	
-	
 }	
+	 function sponser()
+	{
+	window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+
+	} 
 	function barcode()
 	{
 	window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
