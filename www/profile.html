@@ -55,7 +55,9 @@ var queryString = new Array();
                     queryString[key] = value;
                 }
             }
-			}
+			var myArray=queryString[key].split('|');
+	window.location.href="shop_loc.html?member="+myArray[0]+"|"+myArray[1]+"|"+myArray[2];
+	} 
 	function sponser()
 	{
 	window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
