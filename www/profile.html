@@ -37,7 +37,7 @@ document.getElementById('myTable').innerHTML=data;
         }
   });
   
-
+     
 
 function getid()
 {
@@ -45,8 +45,17 @@ window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+lo
 }
 function get6()
 	{
-	window.location.href="shop_loc.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
-	}  
+var queryString = new Array();
+
+          if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+			}
 	function sponser()
 	{
 	window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
@@ -70,19 +79,23 @@ function get6()
     <li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>
      <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
   <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
-	    <li data-icon="user"><a onclick="barcode();" style= font-size:0.9em; data-rel="external" rel="external">BARCODE</a></li>
-<li data-icon="info"><a href="terms_condition.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Terms and Condition</a></li>
-  <li data-icon="info"><a href="privacy_policy.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Privacy Policy</a></li>
-  <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
+<li data-icon="user"><a onclick="barcode();" style= font-size:0.9em; data-rel="external" rel="external">BARCODE</a></li>
+  <li data-icon="info"><a href="terms_condition.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Terms and Condition</a></li>
+   <li data-icon="info"><a href="privacy_policy.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Privacy Policy</a></li>
+ <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
 </ul>  
+ </div>
 
  
    <div data-role="header" data-position="fixed">
-  <h3 style="text-align: center">Customer Profile</h3>
+   <body onload="get();" >
+  <h3 style="text-align: center">Customer Profile<div id="name1"></div></h3>
            <a data-rel="external" rel="external"  role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
           <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext">home</a>
-   </div>   
+  </body>
+  </div>   
+   
 
 <div data-role="main" class="ui-content" id="myTable">
     
@@ -91,3 +104,4 @@ function get6()
 </div> 
 </body>
 </html>
+
