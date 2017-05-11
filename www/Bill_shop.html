@@ -139,10 +139,10 @@ function getreg1()
 	{
 	window.location.href="view_sbill.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
 	} 
-	function gethome1()
-	{
-	window.location.href="shop_bill_new.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname");
-	} 
+	function getid()
+{
+window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+}
 	
 function show_div(id)
 {
@@ -207,7 +207,7 @@ function show_div(id)
            <a data-rel="external" rel="external"  data-rel="back" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
           </a>         
 
-       <a onclick="gethome1();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext" >Home</a>
+       <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext" >home</a>
             </div>   
     <center><h3>Bill Report</h3></center>
 
