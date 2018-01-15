@@ -286,10 +286,35 @@ var myArray=queryString[key].split('|');
 	{
 	window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 
-	} 
+	}
+	
+	function getinboxnum() {
+	var queryString = new Array();
+
+ if (window.location.search.split('?').length > 1) {
+       var params = window.location.search.split('?')[1].split('&');
+       for (var i = 0; i < params.length; i++) {
+           var key = params[i].split('=')[0];
+           var value = decodeURIComponent(params[i].split('=')[1]);
+           queryString[key] = value;
+       }
+   }
+var myArray=queryString[key].split('|');
+var name1 = myArray[2];
+            
+  var xhttp = new XMLHttpRequest();
+  xhttp.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+    var msg = this.responseText;
+     document.getElementById("mailno").innerHTML = msg;
+    }
+  };
+  xhttp.open("GET", "http://shopnearn.co.in/mobileapp/getinbox.php?c_id="+name1, true);
+  xhttp.send();
+}
   </script>
 </head>
-<body>
+<body onload="getinboxnum()">
    <div data-role="page" id="option">
  <div data-role="panel" id="overlayPanel1" data-display="overlay"> 
     <ul data-role="listview">
@@ -315,16 +340,16 @@ var myArray=queryString[key].split('|');
             </div>
           <div data-role="main" class="ui-content"> 
 <div data-role="controlgroup" data-type="vertical">
-    <a onclick="getacc();" class="ui-btn ui-icon-shop ui-btn-icon-top" >My Account </a><br>
+    <a onclick="getacc();" class="ui-btn ui-icon-shop ui-btn-icon-top" >My Account </a>
     </div>
     <div data-role="controlgroup" data-type="vertical">
-    <a onclick="inbox();" class="ui-btn ui-icon-mail ui-btn-icon-top" >Company Message Inbox</a><br>
+    <a onclick="inbox();" class="ui-btn ui-icon-mail ui-btn-icon-top" >Company Message Inbox(<span id="mailno"></span>)</a>
     </div>
     <div data-role="controlgroup" data-type="vertical">
-    <a onclick="getname1();" class="ui-btn ui-icon-user ui-btn-icon-top">New Registration</a><br>
+    <a onclick="getname1();" class="ui-btn ui-icon-user ui-btn-icon-top">New Registration</a>
   </div>
   <div data-role="controlgroup" data-type="vertical">
-    <a  onclick="get6();" class="ui-btn ui-icon-location ui-btn-icon-top">Shop Locator</a><br>
+    <a  onclick="get6();" class="ui-btn ui-icon-location ui-btn-icon-top">Shop Locator</a>
   </div>
   <div data-role="controlgroup" data-type="vertical">
      <button class="ui-btn ui-icon-lock ui-btn-icon-top" onclick="getpass();">Change Password</button> 
