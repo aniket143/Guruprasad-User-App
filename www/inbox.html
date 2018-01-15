@@ -10,10 +10,11 @@
   <script src="js/jquery.mobile-1.4.5.js"></script>  
  <script src="jss/jquery-1.4.4.min.js"></script>  
 <script type="text/javascript">
-function message_detials(i)
+function message_detials(i,rstatus)
 {
-        var Sr_no=i;         
-       	window.location.href="msg.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid")+'|'+Sr_no;
+        var Sr_no=i;
+        localStorage.setItem("rstatus",rstatus);
+       	window.location.href="msg.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid")+'|'+Sr_no+'|'+rstatus;
 }
  $(function() {
      $(document).ready(function() {
@@ -32,6 +33,7 @@ var myArray=queryString[key].split('|');
             document.getElementById('name').innerHTML=myArray[2];
        $.ajax({
    url: "http://shopnearn.co.in/mobileapp/inbox.php",
+   //url: "../mobileapp/inbox.php",
   // url: "http://shopnearn.co.in/mobileapp/sponser_details.php",
            type     : 'GET',
              data: ({name: name1}),
@@ -39,14 +41,14 @@ var myArray=queryString[key].split('|');
                   dataType: "text",
                   success: onSuccess
                 });});
-    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+    						$("#resultLog").ajaxError(function(event, request, settings, exception) {
           $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
         });
 function onSuccess(data)
-        {
-       $("#resultLog").html("Result: " + data);
-document.getElementById('inbox').innerHTML=data;
-        }
+{
+ 		$("#resultLog").html("Result: " + data);
+		document.getElementById('inbox').innerHTML=data;
+}
   });
  
 	function get6()
@@ -75,22 +77,20 @@ var myArray=queryString[key].split('|');
 	  
 function getid()
 {
-window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+		window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 } 
 function sponser()
-	{
-	window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
-
-	} 
-	function getback()
 {
-window.location.href="inbox.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+		window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+} 
+function getback()
+{
+		window.location.href="inbox.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 }
-	function barcode()
-	{
-	window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
-
-	} 
+function barcode()
+{
+		window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+} 
   </script>
 </head>
 <body >
