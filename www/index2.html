@@ -59,7 +59,8 @@ else
 redirect();
 }
 }
-  function redirect()
+
+function redirect()
 {
 var client=document.getElementById('client').checked;
 var mob=document.getElementById('mob').checked;
@@ -99,7 +100,7 @@ else{
                   dataType: "text",
                   success: onSuccess
                 });}});
-    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+    						$("#resultLog").ajaxError(function(event, request, settings, exception) {
           $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
         });
 function onSuccess(data)
@@ -162,8 +163,8 @@ function onSuccess(data)
    if(ss[0]==name) 
        {
        	alert("Please enter correct username and password!!!");
-document.getElementById('fname').value="";       
-document.getElementById('pwd').value="";       
+							document.getElementById('fname').value="";       
+							document.getElementById('pwd').value="";       
 
        }
        else
@@ -185,7 +186,32 @@ function exitFromApp()
  //alert('hello');
    navigator.app.exitApp();
  }
+ 
+function getcusttext(val)
+{
+			if(val == "client")
+			{
+						document.getElementById('fname1').innerHTML = "Customer Login Id:";
+			}
+			else if(val == "mob")
+			{
+						document.getElementById('fname1').innerHTML = "Customer Mobile Number:";
+			}
+}
 </script>
+<style type="text/css">
+.left{
+          display: block;
+          float:left; 
+          width:50%;
+    }
+    
+.right{
+          display: block;
+          float:right; 
+          width:50%;
+    }
+</style>
 </head>
 <body>
 <!--.... ......First Page........ -->
@@ -201,24 +227,25 @@ function exitFromApp()
 
 </div>
 </div>
-  <div data-role="main" class="ui-content">
+<div data-role="main" class="ui-content">
 <form method="post">
  <legend>Choose Your Type:</legend>
-        <label for="client">Customer ID</label>
-        <input type="radio" name="type" id="client" value="client">
-        <label for="mob">Mobile No.</label>
-        <input type="radio" name="type" id="mob" value="mob">	
-      <label for="fname">Customer Login Id:</label>
+ 							<div class="left">
+ 							<label for="client">Customer ID</label>
+ 							<input type="radio" name="type" id="client" onclick="getcusttext(this.value)" value="client" checked>
+ 							</div>
+							<div class="right">
+							<label for="mob">Mobile No.</label>
+        <input type="radio" name="type" id="mob" onclick="getcusttext(this.value)" value="mob">
+							</div>
+
+      <label for="fname"><span id="fname1">Customer Login Id:</span></label>
       <input type="text" name="fname" id="fname" onclick="radio();"  required>
       <label for="lname">Password:</label>
       <input type="password" name="pwd" id="pwd" onclick="radio();" required> 
   <button id="callAjax2"  value="Submit" type="button" onclick="checkConnection();" >Submit </button>
   </form>
- <!-- <div  style="background-color:white;text-align:center;" >
-  <img src="logo.png" class="ui-responsive" style="width:35%;hieght:35%;"></img><br>
- <label align="center" style="color:black;"> www.shopnearn.co.in </label><p><label align="center" style="color:rgb(231,120,23);"><i><b>Partner With Everyone</b></i></label></p>
-
-</div>-->
+		<a href="forgetpassword.html">Forget Password</a>
 </div>
   </div>
     </div> 
