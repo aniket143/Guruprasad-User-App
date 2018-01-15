@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">  
+ <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />  
+ <link rel="stylesheet" href="css/themes/my-custom-theme.css" />
+	<script src="js/jquery-1.11.3.min.js"></script>
+ <script src="js/jquery.mobile-1.4.5.js"></script>  
+ <script src="js/jquery-1.7.min.js"></script>
+</head>
+<script type="text/javascript" >
+function callchangepass()
+{
+			var pass = document.getElementById('pass').value;
+			var cpass = document.getElementById('cpass').value;
+			if(pass == '' || cpass == '')
+			{
+						alert("Please fill password and confirm password!!");			
+			}
+			else if(pass != cpass)
+			{
+						alert("password not match!!");			
+			}
+			else
+			{
+						var xhttp = new XMLHttpRequest();
+				  xhttp.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				     var msg = this.responseText;
+				     alert(msg);
+				     window.location.href = 'index2.html';
+				    }
+				  };
+				  xhttp.open("GET", "http://shopnearn.co.in/mobileapp/changepass.php?pass="+pass+"&cpass="+cpass, true);
+				  xhttp.send();
+			}
+}
+</script>
+<body>
+
+<div data-role="main" class="ui-content">
+<div align="middle">
+  <div  style="background-color:white;text-align:center;" >
+ 				<img src="guruprasad logo.png" class="ui-responsive" style="width:65%;height:40%;"></img><br>
+</div>
+</div>
+</div>
+<div data-role="main" class="ui-content">
+
+<label for="pass">New Password</label>
+<input type="password" name="pass" id="pass">
+<label for="cpass">Confirm Password</label>
+<input type="password" name="cpass" id="cpass">
+<input type="button" id="next" name="next" value="Change Password" onclick="callchangepass();">
+
+</div>
+</body>
+</html>
