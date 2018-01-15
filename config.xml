@@ -54,10 +54,10 @@
 
     <icon src="icon.png" />
     
-      <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="icon.png"  width="320" height="480"/>
-    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="icon.png"  width="320" height="480" />
-    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="icon.png"  width="320" height="480" />
-    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="icon.png"  width="320" height="480" />
+      <gap:splash gap:platform="android" gap:qualifier="port-ldpi" src="guruprasad_logo.png"  width="320" height="480"/>
+    <gap:splash gap:platform="android" gap:qualifier="port-mdpi" src="guruprasad_logo.png"  width="320" height="480" />
+    <gap:splash gap:platform="android" gap:qualifier="port-hdpi" src="guruprasad_logo.png"  width="320" height="480" />
+    <gap:splash gap:platform="android" gap:qualifier="port-xhdpi" src="guruprasad_logo.png"  width="320" height="480" />
  <!-- <icon gap:platform="android" gap:qualifier="ldpi" src="www/res/icon/android/icon-36-ldpi.png" />
     <icon gap:platform="android" gap:qualifier="mdpi" src="www/res/icon/android/icon-48-mdpi.png" />
     <icon gap:platform="android" gap:qualifier="hdpi" src="www/res/icon/android/icon-72-hdpi.png" />
