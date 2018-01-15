@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+<meta charset="ISO-8859-1">
+
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">  
+ <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />  
+ <link rel="stylesheet" href="css/themes/my-custom-theme.css" />
+<script src="js/jquery-1.11.3.min.js"></script>
+  <script src="js/jquery.mobile-1.4.5.js"></script>  
+ <script src="jss/jquery-1.4.4.min.js"></script>  
+<script type="text/javascript"> 
+function checkConnection(e) {
+		if (doesConnectionExist() == true) {
+//	alert("connection exists!");
+		//	redirect();
+		} else {
+			alert("connection doesn't exist!");
+		window.location.reload();
+		}
+	}
+	
+	function doesConnectionExist() {
+	    var xhr = new XMLHttpRequest();
+//var file = "member_details.php";
+	var file = "http://shopnearn.co.in/mobileapp/member_details.php";
+		var randomNum = Math.round(Math.random() * 10000);
+		
+		xhr.open('HEAD', file + "?rand=" + randomNum, false);
+	    
+	    try {
+	    	xhr.send();
+	    	
+		    if (xhr.status >= 200 && xhr.status < 304) {
+		        return true;
+		    } else {
+		        return false;
+		    }
+	    } catch (e) {
+	    	return false;
+	    }
+	}
+function getname1()
+  {
+  var queryString = new Array();
+
+          if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+  var myArray=queryString[key].split('|');
+           // var name1 = myArray[2];         
+document.getElementById('name1').innerHTML=myArray[2];
+document.getElementById('sponsorId').value=myArray[2];
+}
+
+ $(function() {
+      $("#callAjax").click(function() {
+            var sponsorId = $.trim($("#sponsorId").val());
+            var title = $.trim($("#title").val());
+            var applicateName = $.trim($("#applicateName").val());
+            var fatherName = $.trim($("#fatherName").val());
+            var nameTitle = $.trim($("#nameTitle").val());
+            var date = $.trim($("#date").val());
+            var panNo = $.trim($("#panNo").val());
+            //var cardid = $.trim($("#cardid").val());
+            var address = $.trim($("#address").val());
+            var city_town = $.trim($("#city_town").val());
+            var district = $.trim($("#district").val());
+            var state = $.trim($("#state").val());
+            var pincode = $.trim($("#pincode").val());
+            var phoneno = $.trim($("#phoneno").val());
+            var mobileNo= $.trim($("#mobileNo").val());
+            var email= $.trim($("#email").val());
+            //var nomineeName= $.trim($("#nomineeName").val());
+           // var relation= $.trim($("#relation").val());
+            //var payableName= $.trim($("#payableName").val());
+            //var bankName= $.trim($("#bankName").val());
+            //var branch= $.trim($("#branch").val());
+            //var city= $.trim($("#city").val());
+            //var accountNo= $.trim($("#accountNo").val());
+           // var accountType= $.trim($("#accountType").val());
+           // var ifscCode= $.trim($("#ifscCode").val());
+            var password= $.trim($("#password").val());
+            var confirm_password= $.trim($("#confirm_password").val());
+            //var transaction_password= $.trim($("#transaction_password").val());
+            var ccode= $.trim($("#ccode").val());
+            if(applicateName=="" || ccode=="" || sponsorId==""||date==""||panNo==""||address==""||city_town==""||state==""||pincode==""||mobileNo==""||password==""||confirm_password=="")
+           {
+           alert("Please Enter All details properly!!");  
+           document.getElementById('password').value="";         
+           document.getElementById('confirm_password').value="";         
+           }
+           
+     else{
+            $.ajax({
+   url: "http://shopnearn.co.in/mobileapp/client_entry.php?action=member",
+       // url: "http://shopnearn.co.in/mobileapp/client_entry.php?action=member",
+           type     : 'POST',
+              data: ({sponsorId:sponsorId,title:title,nameTitle:nameTitle,applicateName:applicateName,fatherName:fatherName,date:date,panNo:panNo,address:address,city_town:city_town,district:district,state:state,pincode:pincode,phoneno:phoneno,mobileNo:mobileNo,email:email,password:password,confirm_password:confirm_password}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });
+                }
+                });
+     $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
+          
+function onSuccess(data)
+        {
+        //alert(data);
+             var sponsorId = $.trim($("#sponsorId").val());
+            var applicateName = $.trim($("#applicateName").val());
+            var date = $.trim($("#date").val());
+            var panNo = $.trim($("#panNo").val());
+           // var cardid = $.trim($("#cardid").val());
+            var address = $.trim($("#address").val());
+            var city_town = $.trim($("#city_town").val());
+            var state = $.trim($("#state").val());
+            var pincode = $.trim($("#pincode").val());
+            var mobileNo= $.trim($("#mobileNo").val());
+            var password= $.trim($("#password").val());
+            var confirm_password= $.trim($("#confirm_password").val());
+ if(applicateName=="" || sponsorId==""||date==""||panNo==""||address==""||city_town==""||state==""||pincode==""||mobileNo==""||password==""||confirm_password=="")
+           {
+           alert("Please Enter All details properly!!");  
+           document.getElementById('password').value="";         
+           document.getElementById('confirm_password').value="";         
+           }
+           
+     else{
+          $("#resultLog").html("Result: " + data);
+                               alert("Client Registered Successfully...!!!!");  
+          window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+         document.getElementById('applicateName').value="";         
+           document.getElementById('fatherName').value="";         
+           document.getElementById('date').value="";         
+           document.getElementById('panNo').value="";         
+          // document.getElementById('cardid').value="";         
+           document.getElementById('state').value="";         
+           document.getElementById('address').value="";         
+           document.getElementById('mobileNo').value="";         
+           document.getElementById('email').value="";         
+           document.getElementById('ccode').value="";         
+          // document.getElementById('nomineeName').value="";         
+          // document.getElementById('relation').value="";         
+          // document.getElementById('payableName').value="";         
+           document.getElementById('city_town').value="";         
+           document.getElementById('pincode').value="";         
+           document.getElementById('phoneno').value="";         
+          // document.getElementById('branch').value="";         
+          // document.getElementById('city').value="";         
+           //document.getElementById('ifscCode').value="";         
+          // document.getElementById('accountNo').value="";         
+           //document.getElementById('bankName').value="";         
+          // document.getElementById('accountType').value="";         
+           document.getElementById('district').value="";         
+          }
+          }
+  });
+  
+   function check_id(id2)
+{
+	var res="sponsorId="+id2;
+	//alert(res);
+$.ajax({
+		    		 type: "POST",
+    				// url:"sponser.php",
+    				         url: "http://shopnearn.co.in/mobileapp/sponser.php",
+    				 data:res,
+		    		 success: function(msg){
+		   			if(msg==1 )
+			     		{
+          // alert(msg);
+					       	$('#sponsorval').fadeIn(1000);
+			      				document.getElementById('sponsorval').innerHTML="Sponser Id is NOT available"; 
+		      					$('#sponsorval').fadeOut(3500);
+												document.getElementById('sponsorId').value=""; 
+												document.getElementById('sponsorId').focus();
+				    		}
+				else
+					     	{
+														document.getElementById('sponsorval').innerHTML=msg; 
+				    			}
+				   }
+				});
+			
+	} 
+	
+	function email_add(id1)
+{
+ var res="email="+id1;
+
+$.ajax({
+				 type: "GET",
+				// url:"email_admin.php",
+				 url: "http://shopnearn.co.in/mobileapp/email_admin.php",
+				 data:res,
+				 success: function(msg){
+				 	
+      //	alert(msg);
+					if(msg==1)
+					{
+     		//	alert(msg);
+						$('#emailval').fadeIn(1000);
+							document.getElementById('emailval').innerHTML="email exists"; 
+								$('#emailval').fadeOut(3500);
+								document.getElementById('email').value=""; 
+							//	document.getElementById('email').focus();
+						}
+				 }
+		});
+	}
+	  
+function checkPass()
+{
+    //Store the password field objects into variables ...
+    var pass1 = document.getElementById('password');
+    var pass2 = document.getElementById('confirm_password');
+    //Store the Confimation Message Object ...
+    var message = document.getElementById('confirmMessage');
+    //Set the colors we will be using ...
+    var goodColor = "#66cc66";
+    var badColor = "#ff6666";
+    //Compare the values in the password field 
+    //and the confirmation field
+    if(pass1.value == pass2.value){
+        //The passwords match. 
+        //Set the color to the good color and inform
+        //the user that they have entered the correct password 
+        pass2.style.backgroundColor = goodColor;
+        message.style.color = goodColor;
+        message.innerHTML = "Passwords Match!"
+    }else{
+        //The passwords do not match.
+        //Set the color to the bad color and
+        //notify the user.
+        pass2.style.backgroundColor = badColor;
+        message.style.color = badColor;
+        message.innerHTML = "Passwords Do Not Match!"
+    }
+}  
+
+function phonenumber(id3)
+{
+ var res="mobileNo="+id3;
+$.ajax({
+				 type: "GET",
+				// url:"mobno_admin.php",
+				 url: "http://shopnearn.co.in/mobileapp/mobno_admin.php",
+				 data:res,
+				 success: function(msg){
+				 		if(msg==1)
+					{
+     		$('#mob').fadeIn(1000);
+							document.getElementById('mob').innerHTML="mobno exists"; 
+								$('#mob').fadeOut(1000);
+								document.getElementById('mobileNo').value=""; 
+								//document.getElementById('mobileNo').focus();
+						}
+				 }
+		});
+	}
+	
+	function numbersonly(myfield, e, dec)
+{
+  	var specialKeys = new Array();
+        specialKeys.push(8); //Backspace
+           var keyCode = e.which ? e.which : e.keyCode
+            var ret = ((keyCode >= 48 && keyCode <= 57) || specialKeys.indexOf(keyCode) != -1);
+         //   document.getElementById("error").style.display = ret ? "none" : "inline";
+            return ret;
+}
+function lettersOnly(evt) {
+        evt = (evt) ? evt : event;
+        var charCode = (evt.charCode) ? evt.charCode : ((evt.keyCode) ? evt.keyCode :
+          ((evt.which) ? evt.which : 0));
+        if (charCode == 32)
+            return true;
+        if (charCode > 31 && (charCode < 65 || charCode > 90) &&
+          (charCode < 97 || charCode > 122)) {
+            return false;
+        }
+        else
+            return true;
+    }
+    
+    function check(){
+ var pass1 = document.getElementById('password').value;
+    var pass2 = document.getElementById('confirm_password').value;
+    if(pass1!=pass2)
+    {
+    alert("Please Check Password");
+    document.getElementById('password').value="";
+    document.getElementById('confirm_password').value="";
+    }
+    }
+    function getid()
+{
+window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+} 
+
+	function get6()
+	{
+	window.location.href="shop_loc.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+	}   
+	
+	function msg_send()
+{
+	 var mobile=document.getElementById('mobileNo').value;
+	 var cmatch=document.getElementById('cmatch').value;
+ var res="mobile="+mobile+"&cmatch="+cmatch;
+//alert(res);
+$.ajax({
+				 type: "GET",
+				 url:"http://shopnearn.co.in/mobileapp/msg_send_cof.php",
+				 data:res,
+				 success: function(msg){
+				 	
+    //	alert(msg);
+					if(msg==1)
+					{
+					alert("Message Send");
+     	//	alert(msg);
+					}
+				 }
+		});
+	}
+
+$(function() {
+      $("#mobileNo").click(function() {
+            $.ajax({
+     url: "http://shopnearn.co.in/mobileapp/code.php",
+  // url: "http://shopnearn.co.in/mobileapp/billno.php",
+         type     : 'POST',
+              data: ({}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });
+                });
+     $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
+          
+function onSuccess(data)
+        {
+        // alert(data);
+         document.getElementById('cmatch').value=data;
+          }
+  });  
+   
+   function checkcode()
+   {
+   	 var cmatch=document.getElementById('cmatch').value;
+   	 var ccode=document.getElementById('ccode').value;
+   	 if(cmatch!=ccode)
+   	 {
+     alert("Please Enter Correct Code...!!!")   	 
+     document.getElementById('ccode').value="";
+				 document.getElementById('ccode').focus();
+   	 }
+   	 else
+   	 {}
+      }
+      function sponser()
+	{
+	window.location.href="sponser.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+
+	} 
+	function barcode()
+	{
+	window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+
+	} 
+</script>
+</head>
+<body onload="getname1();">
+<div data-role="page" id="member_reg_new">
+<div data-role="panel" id="overlayPanel1" data-display="overlay"> 
+   <ul data-role="listview">
+     <li data-icon="location"><a onclick="get6();" style= font-size:0.9em;>Shop Locator</a></li> 
+  <li data-icon="user"><a href="profile.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Client Profile</a></li>
+  <li data-icon="user"><a onclick="sponser();" style= font-size:0.9em; data-rel="external" rel="external">Sales Promoter's Details</a></li>
+  <!--<li data-icon="user"><a href="shop_about_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">About Us</a></li>-->
+     <li data-icon="info"><a href="shop_faq.html?reload" style= font-size:0.9em; data-rel="external" rel="external">FAQ</a></li>
+  <li data-icon="phone"><a href="shop_contact_us.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Contact Us</a></li>
+<li data-icon="user"><a onclick="barcode();" style= font-size:0.9em; data-rel="external" rel="external">BARCODE</a></li>
+	   <li data-icon="info"><a href="terms_condition.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Terms and Condition</a></li>
+  <li data-icon="info"><a href="privacy_policy.html?reload" style= font-size:0.9em; data-rel="external" rel="external">Privacy Policy</a></li>
+  <li data-icon="power"><a href="index.html?reload" style= font-size:0.9em; data-rel="external" rel="external" >Logout</a></li>
+</ul>  
+</div> 
+
+   <div data-role="header" data-position="fixed">
+
+       <h3 style="text-align: center"><div id="name1"></div></h3>
+           <a data-rel="external" rel="external"  role="button" data-role="button" data-mini="true" href="#overlayPanel1" class="ui-btn-left ui-btn-corner-all ui-btn  ui-icon-bars ui-btn-icon-notext ui-shadow" title="Home" data-form="ui-icon" data-theme="a" > 
+          </a>         
+          <a onclick="getid();" class="ui-btn ui-corner-all ui-icon-home ui-btn-icon-notext" >home</a>
+
+            </div>
+    <div data-role="main" class="ui-content">
+<br><div align="middle"><h3>Client Registration Form</h3></div>
+<form  name="contact_form" class="contact_form" method="post">
+<div class="ui-field-contain">
+      <label for="sponsorId">Sales promoter ID:</label>
+      <input type="text" name="sponsorId" id="sponsorId" value="A00001"> <div id="sponsorval"></div>
+      </div>
+      <div class="ui-field-contain">
+
+      <label for="title">Title:</label>
+         <fieldset  data-role="controlgroup" data-type="horizontal"> 
+     <select name="title" id="title" required>
+    <option value="Mr." selected="">Mr.</option><option value="Mrs">Mrs</option><option value="Ms.">Ms.</option><option value="Dr.">Dr.</option>
+                  </select>
+                  </fieldset> 
+      <label for="applicateName">Applicant Name:</label>
+      <input type="text" name="applicateName" id="applicateName"  onkeypress="return lettersOnly(event)" required>
+            </div>
+ <div class="ui-field-contain"> 
+ <label for="nameTitle">Father/Husband's Name:</label>
+   <fieldset  data-role="controlgroup" data-type="horizontal"> 
+ <select name="nameTitle" id="nameTitle" required>
+                <option value="S/O" selected="">S/O</option><option value="W/O">W/O</option><option value="D/O">D/O</option>
+            </select>          </fieldset> 
+ <input id="fatherName" type="text" onkeypress="return lettersOnly(event)"  name="fatherName" >
+   </div> 
+   <div class="ui-field-contain">
+      <label for="day">Date Of Birth:</label>
+       <input type="date" name="date" id="date" required>
+       </div>
+               <div class="ui-field-contain">
+      <label for="panNo">Pan No:</label>
+      <input type="text" name="panNo" id="panNo" maxlength="10" required>
+      </div>
+         <!--<div class="ui-field-contain">
+      <label for="cardid">Card ID:</label>
+      <input type="text" name="cardid" id="cardid" maxlength="16" required>
+      </div>-->
+         <div class="ui-field-contain">
+      <label for="address">Address:</label>
+      <textarea name="address" id="address"  required></textarea>
+      </div>
+         <div class="ui-field-contain">
+      <label for="city_town">City/Town :</label>
+      <input type="text" name="city_town" id="city_town" onkeypress="return lettersOnly(event)" required>
+      </div>
+         <div class="ui-field-contain">
+      <label for="district">District :</label>
+      <input type="text" name="district" id="district" onkeypress="return lettersOnly(event)" required>
+      </div>
+         <div class="ui-field-contain">
+      <label for="state">State:</label>
+    <select name="state" id="state" required >
+      <option value="" >--------Select State--------</option><option value="Andaman And Nicobar">Andaman And Nicobar</option>
+				 <option value="Andhra Pradesh">Andhra Pradesh</option><option value="Arunachal Pradesh">Arunachal Pradesh</option><option value="Assam">Assam</option>
+				 <option value="Bihar">Bihar</option><option value="Chandigarh">Chandigarh</option><option value="Chattisgarh">Chattisgarh</option>
+				 <option value="Dadar Nagar Haweli">Dadar Nagar Haweli</option><option value="Daman And Diu">Daman And Diu</option><option value="Delhi">Delhi</option>
+				 <option value="Goa">Goa</option><option value="Gujarat">Gujarat</option><option value="Haryana">Haryana</option>
+				 <option value="Himanchal Pradesh">Himanchal Pradesh</option><option value="Jammu And Kashmir">Jammu And Kashmir</option>
+				 <option value="Jharkhand">Jharkhand</option><option value="Karnataka">Karnataka</option><option value="Kerala">Kerala</option>
+				 <option value="Lakshadweep">Lakshadweep</option><option value="Madhya Pradesh">Madhya Pradesh</option><option value="Maharashtra" selected>Maharashtra</option>
+				 <option value="Manipur">Manipur</option><option value="Meghalaya">Meghalaya</option><option value="Mizoram">Mizoram</option><option value="Nagaland">Nagaland</option><option value="Orissa">Orissa</option><option value="Pondicherry">Pondicherry</option><option value="Punjab">Punjab</option><option value="Rajasthan">Rajasthan</option><option value="Sikkim">Sikkim</option><option value="Tamilnadu">Tamilnadu</option><option value="Telangana">Telangana</option><option value="Tripura">Tripura</option>
+				 <option value="Uttar Pradesh">Uttar Pradesh</option><option value="Uttaranchal">Uttaranchal</option><option value="West Bengal">West Bengal</option>
+            </select>
+            </div>
+         <div class="ui-field-contain">
+      <label for="pincode">PinCode :</label>
+      <input id="pincode" type="tel" maxlength="6" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"   name="pincode" required>
+</div>
+         <div class="ui-field-contain"> 
+ <label for="phoneno">Whatsapp No:</label>
+  <input id="phoneno" type="tel" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  name="phoneno" >
+</div>
+        <div class="ui-field-contain"> 
+      <label for="mobileNo"><font color="red">*</font> Mobile No:</label>
+        <input  id="mobileNo" type="tel" maxlength="10" name="mobileNo" onblur="phonenumber(this.value);" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
+<input type="hidden" id="cmatch" name="cmatch"> <div id="mob"></div>   
+      </div>
+	   
+	   <button type="button" class="btn btn-primary" id="confirm" onclick="msg_send()">Confirm</button>
+	   
+    </div>
+      <div class="ui-field-contain"> 
+      <label for="code"><font color="red">*</font> Enter Confirm code:</label>
+
+        <input class="form-control" id="ccode" type="tel" maxlength="4" name="ccode"  onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
+      </div>
+        <!--  <div class="ui-field-contain">  
+  <label for="mobileNo">Mobile No:</label>
+  <input id="mobileNo" type="tel" maxlength="10" name="mobileNo" onblur="phonenumber(this.value)"  onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
+<div id="mob"></div>
+</div> -->
+         <div class="ui-field-contain"> 
+ <label for="email"> Email:</label>
+ <input id="email" type="email" name="email"  onblur="email_add(this.value);" onclick="checkcode();" required><div id="emailval">
+    </div>
+</div>
+       
+         <div class="ui-field-contain">       
+        <label for="password">Password :</label>
+
+        <input  id="password" type="password" name="password" placeholder="password 4 digit number only" title="password 4 digit number only" maxlength="4" required>
+     </div>
+         <div class="ui-field-contain">
+      <label for="confirm_password"> Confirm Password :</label>
+
+        <input id="confirm_password" type="password" onkeyup="checkPass(); return false;" name="confirm_password" placeholder="password 4 digit number only" title="password 4 digit number only" maxlength="4" required>
+</div>
+    
+<div class="ui-field-contain">
+    <label> <input type="checkbox" value="A" onclick="check();" required>&nbsp; I agree the companies T&C</label><a href="#terms" data-rel="popup"  data-transition="flip">Terms and conditions</a>
+</div>    
+     <a  id="callAjax" data-transition="slide"  class="ui-btn" data-theme="b">Submit</a>
+    </form>
+
+<div data-role="popup" id="terms" class="ui-content">
+<a href="#member_reg_new" data-rel="back" class="ui-btn ui-corner-all ui-shadow ui-btn ui-icon-delete ui-btn-icon-notext ui-btn-right">Close</a>
+
+      <p><b>कंपनीचे नियम व अटी</b> </p>
+
+<p style="padding-left: 3%; padding-right: 3%;">
+<label style="font-family:'Bookman Old Style',serif"><b>१) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि. हि कंपनी भारत सरकार कंपनी कायदा १९५६ अंतर्गत   जानेवारी २०१३ मध्ये नोंदणीकृत कंपनी आहे.  </b></label>
+ 
+<label style="font-family:'Bookman Old Style',serif"><b>२) गुरुप्रसाद मल्टी-ट्रेड  मार्केटिंग  प्रा. लि . कंपनीमद्धे १८ वर्षावरील  कोणत्याही भारतीय नागरिकांना  स्वतः च्या निर्णयाने कंपनीचे नियम व अटी  मान्य असल्यास  कंपनीला आवश्यक  असणारी ग्राहकांच्या संदर्भातील माहिती , जसे नाव , पत्ता ,भ्रमणध्वनी ( मोबाईल)क्रमांक , ओळखपत्र , पॅन कार्ड क्रमांक इत्यादी  माहिती असलेले  नोंदनि पत्रक (फॉर्म ) प्रत्यक्ष किंवा ऑनलाईन पूर्णपणे भरून स्वाक्षरी करेल ,त्यानंतर त्याला कंपनीचा नोंदणीकृत ग्राहक क्रमांक देण्यात येईल.ग्राहकांची नोंदणी निशुल्क (मोफत ) करून घेण्यात येईल .
+ ग्राहकांनी नोंदणी करणे हे पूर्णपणे   त्यांच्या स्वतःच्या इच्छेवर अवलंबून असेल . </b></label>
+ 
+ <label style="font-family:'Bookman Old Style',serif"><b>३) गुरुप्रसाद मल्टी-ट्रेड  मार्केटिंग  प्रा. लि . कंपनी आपल्या ग्राहकांना ग्राहक ओळख क्रमांक असलेले खास कार्ड देईल . या कार्डचा वापर कंपनीशी सल्लग्न असलेल्या दुकानदार व सेवापुरावठादार  यांच्याकडून  उत्पादने  व  सेवा विकत घेण्याकरिता करावयाचा आहे . कंपनीने  उपलब्ध करून दिलेली  उत्पादने खेरेदी  केल्यानंतर , ती खरेदी लॉयल्टी  रिवार्ड पोइंट्स ऑफर अंतर्गत नोंद करण्यासाठी हे कार्ड गरजेचे आहे. 
+ तसेच  या कार्डचा वापर इतर कोणत्याही कामासाठी व इतर कोणत्याही कंपनी व संस्थेमध्ये संदर्भ  वस्तू अथवा ओळखपत्र  म्हणून वापर करता येणार  नाही. सदर कार्ड गहाळ झाल्यास किंवा तुटल्यास  नवीन कार्ड देण्यासाठी रुपये ५०/- आकारण्यात  येतील .   </b></label>
+                                                                                        
+<label style="font-family:'Bookman Old Style',serif"><b>४) दुकानामद्धे प्रवेश केल्याबरोबर दुकानदारास गुरुप्रसाद्चे कार्ड दाखवणे बंदनकारक राहील .ग्राहकांनी उत्पादने खरेदी केलेल्या एकूण  बिलाची रक्कम टाय- अप शॉप अॅप्लिकेशनमद्धे करण्यात येईल. एकूण बिलाच्या रकमेची विभागणी करून नोंद केली जाणार नाही तसेच त्यासाठी दुकानदाराकडे आग्रह करू नये . </b></label>
+ 
+<label style="font-family:'Bookman Old Style',serif"><b>५) जर ग्राहकांनी गुरुप्रसाद्चे कार्ड दुकानदारास दाखवल्यानंतर उत्पादने खरेदी करण्यायोग्य वाटत नसल्यास उदा. उत्पादनाची किंमत , दर्जा यांच्यामध्ये तफावत आढळल्यास आपण खरेदी व्यवहारास नकार देऊ शकता .केवळ गुरुप्रसादचे कार्ड दाखवल्याने वस्तू खरेदि  करणे बंधनकारक नाही . खरेदी करणे किंवा न करण्याचा पूर्ण अधिकार ग्राहकास आहे . </b></label>
+ 
+<label style="font-family:'Bookman Old Style',serif"><b>६) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा. लि . कंपनीचे ग्राहक ओळख क्रमांक कार्ड ,हे कंपनी स्वतःच्या मालकीचे ठेवण्याचा अधिकार राखून ठेवत आहे. हे कार्ड कंपनीचे कामगार , अधिकारी, प्रतिनिधी असल्याचे ओळखपत्र नाही. हे कार्ड अशा कोणत्याही कारणाकरिता वापरता येणार नाही . सदर कार्डाचा एखाद्या ग्राहकाने गैरवापर केल्यास त्या ग्राहकाची नोंदणी रद्द करण्याचा तसेच नियमित ग्राहक म्हणून देण्यात येणारे सर्व फायदे स्तगीत करण्याचा अधिकार कंपनी स्वतःकडे राखून ठेवत आहे.तसेच या कार्डचा इतरत्र गैरवापर केल्याबद्दल कोणत्याही प्रकारची कायदेशीर कारवाही झाल्यास कंपनी जबाबदार राहणार नाही .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>७) ग्राहकांनी सभासद कार्ड मिळाल्यानंतर त्याचा काळजीपूर्वक वापर करावा , स्वतःच्या ID आणि पासवर्ड ची नोंद जाणीवपूर्वक लक्षात ठेवावी . ग्राहकांनी  दुकानदाराला पैसे देऊन व्यवहार पूर्ण केल्यावर   आपल्या  व्यवहाराची नोंद दुकानदाराने  योग्यरीत्या कंपनी मोबाईल अॅप्लिकेशन मद्धे  केल्याची  खात्री करावी . उदा . आपले नाव , आपली खरेदी रक्कम बरोबर  आहे का ? आपल्या  मोबाईलमध्ये  GPMMPL या नावाने बिल मेसेज आला आहे का? ते पाहावे . शक्य असल्यास प्रत्येक खरेदीच्या  वेळी दुकानदाराकडून बिलाची मागणी करावी . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>८) दुकानदाराने ग्राहकांना , मोबाईल अॅप मद्धे नोंद करण्यासंदर्भात काही कारणे सांगितल्यास जसे इंटरनेट बंद  आहे , आत्ता मोबाईल दुकानात नाही , मालक दुकानात नाहीत , किंवा इतर काही कारण सांगितल्यास त्या व्यवहाराची नोंद गुरुप्रसादच्या  नोंद वहीत करण्यास सांगून त्यावर स्वाक्षरी करावी , तसे करण्यास दुकानदारास आग्रह करावा . वारंवार दुकानदाराकडून व्यवहाराची नोंद करण्यास टाळाटाळ होत असल्यास त्याबद्दल  गुरुप्रसाद  कंपनीकडे  माहिती कळवावी व कंपनीच्या सूचनेनुसार पुढील खरेदी करावी . जर एखाद्या व्यवहाराचा मेसेज आपल्या पर्यंत आला नसल्यास , लगेचच  स्वतःच्या  अॅप मधील  खात्यामध्ये माय परचेस डिटेल ( MY PURCHASE DETAIL) मद्धे त्याची नोंद झाली  आहे का  त्याची खात्री करावी . 
+तसे नसल्यास दुकानदाराला नोंद करण्याची सूचना करावी . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>९) तुमच्या व कंपनीच्या व्यवहारासंदर्भातील सर्व आवश्यक माहिती मोबाईल अॅप मद्धे दिलेली आहे . ती माहितीआपण २४/७ कधीही इंटरनेटद्वारे मोबाईल अॅप मध्ये पाहू शकता .ग्राहकांचे जाणीवपूर्वक सहकार्य आणि खरेदी सर्वांच्या हिताचे आहे .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१०) गुरुप्रसाद मल्टीट्रेड मार्केटिंग  प्रा. लि .कंपनीचे कार्ड हे कोणत्याही व्यवहाराची पोचपावती नाही ते ग्राहकांना मोफत देण्यात येणार आहे ,त्यामुळे फक्त कार्ड धारक असल्याने लॉयल्टी कॅश बॅक मिळणार नाही. नियमित ग्राहकांना दिली जाणारी लॉयल्टीकॅश बॅक हि , त्यांनी केलेल्या उत्पादन  खरेदी व कंपनीच्या विक्री आणि एकूण व्यवसाय वृद्धीवर सर्वस्वी अवलंबून आहे व राहील . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>११) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि. हि कंपनी कोणत्याही प्रकारची मल्टीलेवल मार्केटिंग (MLM),नेटवर्क मार्केटिंग , डायरेक्ट मार्केटिंग , मुदत ठेव योजना ,मासिक बचत योजना ,पैसे व्याजाने देणे-घेणे ,मोकळ्या जमिनीचे ( बिगर शेती) विक्री खरेदी व्यवहार अशा कोणत्याही प्रकारची योजना राबवत नाही .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१२) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि च्या अधिकृत सही शिक्यानिशी असलेल्या लेखी परिपत्रकाशिवाय प्रसिद्ध केलेली  कोणतीही लिखित अथवा तोंडी स्वरूपातील माहिती किवा पत्रक ग्राह्य धरले  जाणार नाही .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१३) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि हि कंपनी कोणत्याही प्रकारच्या उत्पादनाच्या खरेदी अथवा विक्री च्या मोबदल्यात , अथवा विक्रेय प्रवर्तनासाठी दिले जाणारे कमिशन , ठोस रकमेच्या स्वरुपात अथवा ठराविक मुदतीत देण्याचे कोणतेही लिखित अथवा तोंडी आश्वासन देत नाही व दिलेले नाही . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१४) सदर संकल्पनेचा फायदा हा गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि .कंपनीच्या नोंदणीकृत ग्राहकांनाच मिळू शकेल . गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि.कंपनी अंतर्गत ग्राहक नोंदणीकृत करून घेण्याचे सर्वाधिकार कंपनीकडे राहतील . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१५) कंपनीशी सल्लग्न दुकानदार अथवा व्यावसायिक यांच्या तर्फे उत्पादन किंवा सेवा खरेदीवर सुट , सवलत , माफक दरात विक्री करणे हे पूर्णपणे त्या दुकानदार अथवा व्यावसायिक यांच्यावर  अवलंबून असेल. </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१६) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि.कंपनी सध्या प्रचलित बाजारपेठेतील व्यवसाय करण्याच्या पद्धती जसे किरकोळ विक्री पद्धत व ऑन-लाईन पद्धत या प्रमाणे ग्राहकांना उत्पादने उपलब्ध करून देणार आहे . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१७) गुरुप्रसाद मल्टीट्रेड मार्केटिंग प्रा . लि. कंपनीने उपलब्ध करून दिलेल्या कोणत्याही उत्पादनाची  कमीत कमी ५०० रुपये किंमतीपर्यंतची एकूण खरेदी महिन्याभरात करणे आवश्यक आहे ,सदर ५०० रुपये व त्यावरील रकमेच्या उत्पादनाच्या खरेदीवर सर्वसाधारण  आकर्षक  लॉयल्टी रिवार्ड पोइंट्स ऑफर म्हणून देण्यात येईल . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१८) ग्राहकांनी कंपनीने उपलब्ध करून दिलेल्या कोणत्याही उत्पादनाची  खरेदी केल्यानंतर देण्यात येणारी लॉयल्टी हि  कॅश बॅक किंवा लॉयल्टी रिवार्ड  पोइंट  रिडीमशन  यापैकी एका स्वरुपात देण्यात येईल , हि रिवार्ड पोइंट्स रक्कम  ग्राहकांना  त्यांनी उत्पादने खरेदी  केलेल्या दिवसाच्या  तारीख  व वेळ  या अनुक्रमांकाप्रमाणे देण्यात येईल ,अशा प्रकारे  रिवार्ड पोइंट्स मिळण्याच्या पद्धतीला  ग्राहक  क्वालिफाइड  होणे  असे  संबोधण्यात येईल .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>१९) ग्राहकाला 100 रिवार्ड पोइंट्स लागू झाल्यानंतर सल्लग्न दुकानामद्धे खरेदी करताना रिवार्ड पॉइंट रक्कम म्हणून वापरता येईल अथवा रिवार्ड पॉइंट रक्कम  ५०००/- रुपये पेक्षा अधिक झाल्यास TDS वजा करून  ग्राहकांच्या बँक खात्यात थेट जमा करण्यात येईल.  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>२०) कंपनीने उपलब्ध करून दिलेले कोणतेही उत्पादन, वस्तू , सेवा हि अधिकतम विक्री मुल्य सर्व करांसहित असलेल्या (M.R.P) किंमतीवर विक्री करेल, कोणत्याही प्रकारचे सेल , सवलत अथवा स्कीम या प्रमाणे विक्री करणार नाही . </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>२१) कंपनीने विक्रीकरता उपलब्धकारून दिलेल्या वस्तूंची व उत्पादनाची विक्री पश्चात सेवा , उत्पादनातील त्रुटी , उत्पादनाचा दर्जा , वॉरंटी  या सर्वांना व  अशा तत्सम इतर गोष्टींना उत्पादक जबाबदार  असतील .  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>२२) ग्राहकांकडून घेण्यात येणारी त्यांच्या बद्दलची वैयत्यिक माहिती हि कंपनीच्या प्रशासकीय  कामासाठी उपयोगात आणण्यात येईल.तसेच सदर माहिती मद्धे काही आवश्यक बदल करायचा  असल्यास ग्राहकाला कंपनीच्या ऑनलाईन ग्राहक खात्यामध्ये जाऊन पाहू शकतो तसेच कंपनीकडून बदल करून घेऊ शकतो  </b></label>
+
+<label style="font-family:'Bookman Old Style',serif"><b>२३) कोणतीही पूर्वसूचना  न देता कंपनीच्या अटी आणि नियमांमध्ये बदल करण्याचा संपूर्ण अधिकार  कंपनी स्वतःकडे राखून ठेवत आहे  . तसेच केलेले बदल कंपनी  ग्राहकांच्या वेळोवेळी  निदर्शनास आणून देण्यात येतील . </b></label>
+
+</p>
+    </div>
+        </div>
+</div>
+    <!--......client Registration Form End........-->
+</body>
+</html>
