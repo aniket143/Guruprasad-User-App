@@ -24,28 +24,29 @@ var queryString = new Array();
 var myArray=queryString[key].split('|');
             var name1 = myArray[2];
             var Sr_no = myArray[3];
+            var rstatus = myArray[4];
 
             document.getElementById('name').innerHTML=myArray[2];
 
        $.ajax({
    url: "http://shopnearn.co.in/mobileapp/msg.php",
-  // url: "http://shopnearn.co.in/mobileapp/sponser_details.php",
+   //url: "../mobileapp/msg.php",
+   //url: "http://shopnearn.co.in/mobileapp/sponser_details.php",
            type     : 'GET',
-             data: ({name: name1,Sr_no:Sr_no}),
+             data: ({name: name1,Sr_no:Sr_no,rstatus:rstatus}),
                   cache: false,
                   dataType: "text",
                   success: onSuccess
                 });
 
-    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+    						$("#resultLog").ajaxError(function(event, request, settings, exception) {
           $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
         });
 function onSuccess(data)
-        {
-     // alert(data);
+{
        $("#resultLog").html("Result: " + data);
-document.getElementById('inbox').innerHTML=data;
-        }
+						document.getElementById('inbox').innerHTML=data;
+}
 
 });
  });
@@ -91,7 +92,8 @@ window.location.href="inbox.html?member="+localStorage.getItem("shopcode")+'|'+l
 	{
 	window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 
-	} 
+	}
+	
   </script>
 </head>
 <body>
