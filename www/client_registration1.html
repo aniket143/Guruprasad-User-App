@@ -404,10 +404,10 @@ function onSuccess(data)
     <option value="Mr." selected="">Mr.</option><option value="Mrs">Mrs</option><option value="Ms.">Ms.</option><option value="Dr.">Dr.</option>
                   </select>
                   </fieldset> 
-      <label for="applicateName">Applicant Name:</label>
+      <label for="applicateName"><font color="red">*</font>Applicant Name:</label>
       <input type="text" name="applicateName" id="applicateName"  onkeypress="return lettersOnly(event)" required>
             </div>
- <div class="ui-field-contain"> 
+ <!--<div class="ui-field-contain"> 
  <label for="nameTitle">Father/Husband's Name:</label>
    <fieldset  data-role="controlgroup" data-type="horizontal"> 
  <select name="nameTitle" id="nameTitle" required>
@@ -423,7 +423,7 @@ function onSuccess(data)
       <label for="panNo">Pan No:</label>
       <input type="text" name="panNo" id="panNo" maxlength="10" required>
       </div>
-         <!--<div class="ui-field-contain">
+         <div class="ui-field-contain">
       <label for="cardid">Card ID:</label>
       <input type="text" name="cardid" id="cardid" maxlength="16" required>
       </div>-->
@@ -432,11 +432,11 @@ function onSuccess(data)
       <textarea name="address" id="address"  required></textarea>
       </div>
          <div class="ui-field-contain">
-      <label for="city_town">City/Town :</label>
+      <label for="city_town"><font color="red">*</font>City/Town :</label>
       <input type="text" name="city_town" id="city_town" onkeypress="return lettersOnly(event)" required>
       </div>
          <div class="ui-field-contain">
-      <label for="district">District :</label>
+      <label for="district"><font color="red">*</font>District :</label>
       <input type="text" name="district" id="district" onkeypress="return lettersOnly(event)" required>
       </div>
          <div class="ui-field-contain">
@@ -455,13 +455,13 @@ function onSuccess(data)
             </select>
             </div>
          <div class="ui-field-contain">
-      <label for="pincode">PinCode :</label>
+      <label for="pincode"><font color="red">*</font>PinCode :</label>
       <input id="pincode" type="tel" maxlength="6" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"   name="pincode" required>
 </div>
-         <div class="ui-field-contain"> 
+         <!--<div class="ui-field-contain"> 
  <label for="phoneno">Whatsapp No:</label>
   <input id="phoneno" type="tel" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  name="phoneno" >
-</div>
+</div>-->
         <div class="ui-field-contain"> 
       <label for="mobileNo"><font color="red">*</font> Mobile No:</label>
         <input  id="mobileNo" type="tel" maxlength="10" name="mobileNo" onblur="phonenumber(this.value);" onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
