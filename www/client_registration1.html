@@ -379,6 +379,11 @@ function onSuccess(data)
 	window.location.href="barcode.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 
 	} 
+	
+function getback()
+{
+window.location.href="index1.html";
+}
 </script>
 	<style type="text/css">
 .left{
@@ -517,7 +522,7 @@ function onSuccess(data)
      <div class="left" style="padding-left: 15px;">
      <a  id="callAjax" data-transition="slide"  class="ui-btn" data-theme="b">Submit</a></div>
 <div class="right">	 
-	 <a  id="callAjax" data-transition="slide" href="index1.html"  class="ui-btn" data-theme="b">Cancel</a>
+	 <a  id="callAjax" data-transition="slide" onclick="getback();"  class="ui-btn" data-theme="b">Cancel</a>
 	 </div>
     </form>
 
