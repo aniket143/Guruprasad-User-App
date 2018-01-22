@@ -380,6 +380,19 @@ function onSuccess(data)
 
 	} 
 </script>
+	<style type="text/css">
+.left{
+          display: block;
+          float:left; 
+          width:49%;
+    }
+    
+.right{
+          display: block;
+          float:right; 
+          width:49%;
+    }
+</style>
 </head>
 <body onload="getname1();"  style="background-color:white;">
 <div data-role="page" id="member_reg_new" style="background-color:white;">
@@ -501,7 +514,11 @@ function onSuccess(data)
 <div class="ui-field-contain">
     <label> <input type="checkbox" value="A" onclick="check();" required>&nbsp; I agree the companies T&C</label><a href="#terms" data-rel="popup"  data-transition="flip">Terms and conditions</a>
 </div>    
-     <a  id="callAjax" data-transition="slide"  class="ui-btn" data-theme="b">Submit</a>
+     <div class="left" style="padding-left: 15px;">
+     <a  id="callAjax" data-transition="slide"  class="ui-btn" data-theme="b">Submit</a></div>
+<div class="right">	 
+	 <a  id="callAjax" data-transition="slide"  class="ui-btn" data-theme="b">Cancle</a>
+	 </div>
     </form>
 
 <div data-role="popup" id="terms" class="ui-content">
