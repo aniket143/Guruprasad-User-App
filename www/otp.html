@@ -13,7 +13,8 @@
  function callresetpass()
  {
  				var otp = document.getElementById('txtotp').value;
- 				if(otp == '')
+	                        var client_id = document.getElementById('client_id').value;
+ 				if(otp == '' || client_id == '')
  				{
  						alert("Enter Client id or mobile no!!");
  				}
@@ -30,7 +31,7 @@
 				     else if(msg == 2)
 				     {
 				     			alert("OTP Expire!!");
-				     			window.location.href = 'index1.html';	
+				     			window.location.href = 'forgetpassword.html';	
 				     }
 				     else
 				     {
@@ -39,13 +40,18 @@
 				    }
 				  };
 				  //xhttp.open("GET", "../mobileapp/resetpass.php?otp="+otp, true);
-				  xhttp.open("GET", "http://shopnearn.co.in/mobileapp/resetpass.php?otp="+otp, true);
+				  xhttp.open("GET", "http://shopnearn.co.in/mobileapp/resetpass.php?otp="+otp+"&client_id="+client_id, true);
 				  xhttp.send();
 		  }
  }
+	 
+function client()
+ {
+ document.getElementById("client_id").value=localStorage.getItem("client_id");
+ }	 
  </script>
 </head>
-<body>
+<body onload="client()">
 
 <div data-role="main" class="ui-content">
 <div align="middle">
@@ -58,6 +64,7 @@
 <center>
 <label for="user">OTP</label>
 <input type="text" name="txtotp" id="txtotp"  required>
+<input type="hidden" name="client_id" id="client_id" value="localStorage.getItem('client_id')">	
 <input type="button" id="next" name="next" value="NEXT" onclick="callresetpass();">
 </center>
 </div>
