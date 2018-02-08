@@ -91,7 +91,7 @@ document.getElementById('sponsorId').value=myArray[2];
             var confirm_password= $.trim($("#confirm_password").val());
             //var transaction_password= $.trim($("#transaction_password").val());
             var ccode= $.trim($("#ccode").val());
-            if(applicateName=="" || ccode=="" || date==""||panNo==""||address==""||city_town==""||state==""||pincode==""||mobileNo=="")
+            if(applicateName=="" || ccode=="" ||address==""||city_town==""||state==""||pincode==""||mobileNo=="")
            {
            alert("Please Enter All details properly!!");  
            //document.getElementById('password').value="";         
@@ -103,7 +103,7 @@ document.getElementById('sponsorId').value=myArray[2];
    url: "http://shopnearn.co.in/mobileapp/client_entry.php?action=member",
        // url: "http://shopnearn.co.in/mobileapp/client_entry.php?action=member",
            type     : 'POST',
-              data: ({sponsorId:sponsorId,title:title,nameTitle:nameTitle,applicateName:applicateName,fatherName:fatherName,date:date,panNo:panNo,address:address,city_town:city_town,district:district,state:state,pincode:pincode,phoneno:phoneno,mobileNo:mobileNo,email:email,password:password,confirm_password:confirm_password}),
+              data: ({sponsorId:sponsorId,title:title,applicateName:applicateName,address:address,city_town:city_town,district:district,state:state,pincode:pincode,mobileNo:mobileNo,email:email,ccode:ccode}),
                   cache: false,
                   dataType: "text",
                   success: onSuccess
@@ -128,18 +128,21 @@ function onSuccess(data)
             var mobileNo= $.trim($("#mobileNo").val());
             var password= $.trim($("#password").val());
             var confirm_password= $.trim($("#confirm_password").val());
- if(applicateName=="" || date==""||panNo==""||address==""||city_town==""||state==""||pincode==""||mobileNo=="")
+            var ccode= $.trim($("#ccode").val());
+ if(applicateName=="" ||address==""||city_town==""||state==""||pincode==""||mobileNo=="")
            {
            alert("Please Enter All details properly!!");  
-           document.getElementById('password').value="";         
-           document.getElementById('confirm_password').value="";         
+           document.getElementById('ccode').value="";         
+           //document.getElementById('confirm_password').value="";         
            }
            
      else{
           $("#resultLog").html("Result: " + data);
                                alert("Client Registered Successfully...!!!!");  
-          window.location.href="home.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
-         document.getElementById('applicateName').value="";         
+          window.location.href="index2.html?member="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
+           document.getElementById('sponsorId').value="";  
+	   document.getElementById('applicateName').value=""; 
+	   document.getElementById('title').value="";   
            document.getElementById('fatherName').value="";         
            document.getElementById('date').value="";         
            document.getElementById('panNo').value="";         
