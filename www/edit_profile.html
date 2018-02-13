@@ -150,7 +150,8 @@ function onSuccess(data)
           }  
 			       else
 			       {
-			         $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);});
+			         $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+			       
 			       }       
           
           }
@@ -172,7 +173,7 @@ function onSuccess(data)
 
  }
 </script>
-<body onload="getvalue()">
+<body onload="getvalue();">
 <div data-role="page" id="qrpage">
    <div data-role="header" data-position="fixed">
     <body>
@@ -198,11 +199,11 @@ function onSuccess(data)
 <div data-role="main" class="ui-content" id="profile1" style="background-color:white;">
 <div class="ui-field-contain"> 
   <label for="date">Name</label>
-  <input type="text" name="cname" id="cname" value="" onclick="getvalue()">
+  <input type="text" name="cname" id="cname" value="" >
 </div>
 <div class="ui-field-contain"> 
   <label for="name">Fathers Name</label>
-  <input type="text" name="fname" id="fname" value="" onclick="getvalue()">
+  <input type="text" name="fname" id="fname" value="" >
 </div>
 <div class="ui-field-contain"> 
   <label for="sponsorid">PAN NO</label>
