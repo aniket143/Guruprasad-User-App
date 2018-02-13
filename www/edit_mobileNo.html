@@ -172,7 +172,7 @@ function sendotp()
  				var mobandid = document.getElementById('mobno').value;
  				var userid = document.getElementById('clientid').value;
 				 			
- 				if(mobandid == '')
+ 				if(mobandid == ' ')
  				{
  						alert("Enter mobile no!!");
  				}
@@ -193,7 +193,7 @@ function sendotp()
 		        			//localStorage.otp = arr[0];
 		        			//localStorage.client_id = arr[1];
 					        localStorage.setItem("client_id", arr[1]);
-                            localStorage.setItem("status", arr[4]);
+                                                localStorage.setItem("status", arr[4]);
 
 		                   window.location.href = "otp.html";
 						  
