@@ -14,9 +14,11 @@
  {
  				var otp = document.getElementById('txtotp').value;
 	                        var client_id = document.getElementById('client_id').value;
+	                        var stat = document.getElementById('status').value;
+							
  				if(otp == '' || client_id == '')
  				{
- 						alert("Enter Client id or mobile no!!");
+ 						alert("Enter OTP NO!!");
  				}
  				else
  				{
@@ -36,11 +38,20 @@
 				     else
 				     {
 				     			alert(msg);
+	      window.location.href="my_profile.html?memember="+localStorage.getItem("shopcode")+'|'+localStorage.getItem("shopname")+'|'+localStorage.getItem("shopid");
 				     }
 				    }
 				  };
 				  //xhttp.open("GET", "../mobileapp/resetpass.php?otp="+otp, true);
+				  if (stat == 'C')
+				  {
+				  xhttp.open("GET", "http://shopnearn.co.in/mobileapp/update_mob.php?otp="+otp+"&client_id="+client_id, true);
+
+				  }
+				  else
+				  {
 				  xhttp.open("GET", "http://shopnearn.co.in/mobileapp/resetpass.php?otp="+otp+"&client_id="+client_id, true);
+				  }
 				  xhttp.send();
 		  }
  }
@@ -48,6 +59,7 @@
 function client()
  {
  document.getElementById("client_id").value=localStorage.getItem("client_id");
+ document.getElementById("status").value=localStorage.getItem("status");
  }	 
  </script>
 </head>
@@ -65,6 +77,7 @@ function client()
 <label for="user">OTP</label>
 <input type="text" name="txtotp" id="txtotp"  required>
 <input type="hidden" name="client_id" id="client_id" value="localStorage.getItem('client_id')">	
+<input type="hidden" name="status" id="status" value="localStorage.getItem('status')">	
 <input type="button" id="next" name="next" value="NEXT" onclick="callresetpass();">
 </center>
 </div>
