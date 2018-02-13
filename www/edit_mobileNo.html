@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+ <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.min.css">  
+ <link rel="stylesheet" href="css/themes/jquery.mobile.icons.min.css" />  
+ <link rel="stylesheet" href="css/themes/my-custom-theme.css" />
+<script src="js/jquery-1.11.3.min.js"></script>
+<script src="js/jquery-1.7.min.js"></script> 
+<script type="text/javascript" src="cordova.js"></script>
+ <script src="js/jquery.mobile-1.4.5.js"></script>  
+<script src="js/jquery-1.7.min.js"></script> 
+
+<script type="text/javascript"> 
+function checkConnection(e) {
+		if (doesConnectionExist() == true) {
+			//alert("connection exists!");
+			redirect();
+		} else {
+			alert("connection doesn't exist!");
+		window.location.reload();
+		}
+	}
+	
+	function doesConnectionExist() {
+	    var xhr = new XMLHttpRequest();
+//var file = "member_details.php";
+	var file = "http://shopnearn.co.in/mobileapp/member_details.php";
+		var randomNum = Math.round(Math.random() * 10000);
+		
+		xhr.open('HEAD', file + "?rand=" + randomNum, false);
+	    
+	    try {
+	    	xhr.send();
+	    	
+		    if (xhr.status >= 200 && xhr.status < 304) {
+		        return true;
+		    } else {
+		        return false;
+		    }
+	    } catch (e) {
+	    	return false;
+	    }
+	}
+	
+	
+	
+	function get6()
+	{
+var queryString = new Array();
+
+          if (window.location.search.split('?').length > 1) {
+                var params = window.location.search.split('?')[1].split('&');
+                for (var i = 0; i < params.length; i++) {
+                    var key = params[i].split('=')[0];
+                    var value = decodeURIComponent(params[i].split('=')[1]);
+                    queryString[key] = value;
+                }
+            }
+
+var myArray =queryString[key].split('|');
+	//window.location.href="shop_loc.html?member="+myArray[0]+"|"+myArray[1]+"|"+myArray[2];
+document.getElementById('clientid').value=myArray[2];
+	}   
+	
+//function redirect()
+//{
+$(function() {
+      $("#callAjax2otp").click(function() {
+      
+            var user = $.trim($("#user").val());
+          if(user.length > 0)
+            { $.ajax({
+      url: "http://shopnearn.co.in/mobileapp/forgetpass.php",
+    //  url: "http://shopnearn.co.in/mobileapp/shop_login.php",
+           type     : 'GET',
+             data: ({no: user}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });}});
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+        			if(data == 0)
+        			{
+        						alert("Wrong Details!!");
+        			}
+        			else
+        			{
+						var arr = data.split('#');
+		        			//localStorage.otp = arr[0];
+		        			//localStorage.client_id = arr[1];
+					        localStorage.setItem("client_id", arr[1]);
+		        			//localStorage.MobileNo = arr[2];
+		        			//localStorage.time = arr[3];
+		           //alert(arr[0]);
+		                                window.location.href = "otp.html";
+                                 }
+							
+	}
+  });
+	
+	
+	$(function() {
+      $("#callAjax").click(function() {
+      
+            var user = $.trim($("#user").val());
+            var clientid = $.trim($("#clientid").val());
+          if(user.length > 0)
+            { $.ajax({
+      url: "http://shopnearn.co.in/mobileapp/forgetpass.php",
+    //  url: "http://shopnearn.co.in/mobileapp/shop_login.php",
+           type     : 'GET',
+             data: ({no: user,userid : clientid}),
+                  cache: false,
+                  dataType: "text",
+                  success: onSuccess
+                });}});
+    $("#resultLog").ajaxError(function(event, request, settings, exception) {
+          $("#resultLog").html("Error Calling: " + settings.url + "<br />HTTP Code: " + request.status);
+        });
+function onSuccess(data)
+        {
+        			if(data == 0)
+        			{
+        						alert("Wrong Details!!");
+        			}
+        			else
+        			{
+						var arr = data.split('#');
+		        			//localStorage.otp = arr[0];
+		        			//localStorage.client_id = arr[1];
+					        localStorage.setItem("client_id", arr[1]);
+		        			//localStorage.MobileNo = arr[2];
+		        			//localStorage.time = arr[3];
+		           //alert(arr[0]);
+		                                window.location.href = "otp.html";
+                                 }
+							
+	}
+  });
+	
+	
+	
+	function phonenumber(id3)
+{
+ var res="mobileNo="+id3;
+$.ajax({
+				 type: "GET",
+				// url:"mobno_admin.php",
+				 url: "http://shopnearn.co.in/mobileapp/mobno_admin.php",
+				 data:res,
+				 success: function(msg){
+				 		if(msg==1)
+					{
+     		$('#mob').fadeIn(1000);
+							document.getElementById('resultLog').innerHTML="mob-no exists"; 
+								$('#resultLog').fadeOut(1000);
+								document.getElementById('mobno').value=""; 
+								//document.getElementById('mobileNo').focus();
+						}
+				 }
+		});
+	}
+	
+function sendotp()
+ {
+ 				var mobandid = document.getElementById('mobno').value;
+ 				var userid = document.getElementById('clientid').value;
+				 			
+ 				if(mobandid == '')
+ 				{
+ 						alert("Enter mobile no!!");
+ 				}
+ 				else
+ 				{
+				  var xhttp = new XMLHttpRequest();
+				  xhttp.onreadystatechange = function() {
+				    if (this.readyState == 4 && this.status == 200) {
+				     var msg = this.responseText;
+				     if(msg == 0)
+				     {
+				     	alert("Wrong Details!!");
+                       document.getElementById('user').value="";
+				     }
+				     else
+				     {
+                                                 var arr = msg.split('#');
+		        			//localStorage.otp = arr[0];
+		        			//localStorage.client_id = arr[1];
+					        localStorage.setItem("client_id", arr[1]);
+                            localStorage.setItem("status", arr[4]);
+
+		                   window.location.href = "otp.html";
+						  
+				     }
+				    }
+				  };
+				  xhttp.open("GET", "http://shopnearn.co.in/mobileapp/forgetpass.php?no="+mobandid+"&userid="+userid, true);
+				  xhttp.send();
+		  }
+ }
+//}
+function exitFromApp()
+ {
+ //alert('hello');
+   navigator.app.exitApp();
+ }
+ 
+function getcusttext(val)
+{
+			if(val == "client")
+			{
+						document.getElementById('fname1').innerHTML = "Customer Login Id:";
+			}
+			else if(val == "mob")
+			{
+						document.getElementById('fname1').innerHTML = "Customer Mobile Number:";
+			}
+}
+function getback()
+{
+window.location.href="index1.html";
+}
+</script>
+<style type="text/css">
+.left{
+          display: block;
+          float:left; 
+          width:50%;
+    }
+    
+.right{
+          display: block;
+          float:right; 
+          width:50%;
+    }
+</style>
+</head>
+<body onload="get6();">
+
+<div data-role="page" id="page" style="background-color:white;" >
+
+<div data-role="main" class="ui-content">
+<div align="middle">
+ <div  style="background-color:white;text-align:center;" >
+ <img src="guruprasad logo.png" class="ui-responsive" style="width:65%;height:40%;"></img><br>
+</div>
+<label for="tel">Enter New Mobile No</label>
+<input name="mobno" id="mobno" value="" onblur="phonenumber(this.value);" type="text" required>
+	<button id="callAjax2otp1"  value="Submit" onclick="sendotp();"  type="button" >Submit </button>
+	<input name="clientid" id="clientid" value="" type="hidden" />
+	<div id="resultLog"></div>
+</div>
+</div>
+</div>
+</body>
+</html>
