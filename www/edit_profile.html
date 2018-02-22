@@ -52,8 +52,8 @@ document.getElementById('name1').innerHTML=myArray[2];
 
             var name1 = myArray[2];
        $.ajax({
-    url: "../mobileapp/edit_profile.php",
-    //url: "http://shopnearn.co.in/mobileapp/edit_profile.php",
+    //url: "../mobileapp/edit_profile.php",
+    url: "http://shopnearn.co.in/mobileapp/edit_profile.php",
            type     : 'GET',
              data: ({name: name1}),
                   cache: false,
@@ -128,8 +128,8 @@ document.getElementById('name1').innerHTML=myArray[2];
            
           else{
                 $.ajax({
-                url: "../mobileapp/update_profile.php",
-                //url: "http://shopnearn.co.in/mobileapp/update_profile.php",
+                //url: "../mobileapp/update_profile.php",
+                url: "http://shopnearn.co.in/mobileapp/update_profile.php",
                 type     : 'POST',
                 data: ({name1:client_name,cname:cname,fname:fname,panid:panid,address:address,city:city,dist:dist,state:state,pin:pin,phoneno:phoneno,email:email,nname:nname,nr:nr,bdate:bdate}),
                   cache: false,
