@@ -395,6 +395,11 @@ window.location.href="index1.html";
           float:left; 
           width:47%;
     }
+.left1{
+    display: block;
+    float:left; 
+    width:35%;
+ }   		
     
 .right{
           display: block;
@@ -493,7 +498,7 @@ window.location.href="index1.html";
 	   <button type="button" class="btn btn-primary" id="confirm" onclick="msg_send()">Confirm</button>
 	   
     </div>
-      <div class="left" style="padding-left: 15px;">
+      <div class="left1" style="padding-left: 15px;">
       <div class="ui-field-contain"> 
         <label for="code"><font color="red">*</font> Enter OTP:</label>
         <input class="form-control" id="ccode"  type="text" maxlength="4" name="ccode"  onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
