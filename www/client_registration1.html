@@ -331,7 +331,8 @@ $.ajax({
 					if(msg==1)
 					{
 					alert("Message Send");
-     	//	alert(msg);
+     	//	alert(msg);             
+			      $('#proceed').delay(60000).show(0); 
 					}
 				 }
 		});
@@ -492,11 +493,19 @@ window.location.href="index1.html";
 	   <button type="button" class="btn btn-primary" id="confirm" onclick="msg_send()">Confirm</button>
 	   
     </div>
+      <div class="left" style="padding-left: 15px;">
       <div class="ui-field-contain"> 
-      <label for="code"><font color="red">*</font> Enter Received OTP:</label>
-
-        <input class="form-control" id="ccode" type="tel" maxlength="4" name="ccode"  onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
+        <label for="code"><font color="red">*</font> Enter OTP:</label>
+        <input class="form-control" id="ccode"  type="text" maxlength="4" name="ccode"  onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
+         
       </div>
+   </div>  
+<div class="right" style="padding-right:20px;display:none" id="proceed">
+      <div class="ui-field-contain"> 
+        	 <button type="button" class="btn btn-primary" data-mini="true" id="resend1" onclick="msg_send()">Resend OTP</button>       
+      </div>
+   </div>  	    
+	    
         <!--  <div class="ui-field-contain">  
   <label for="mobileNo">Mobile No:</label>
   <input id="mobileNo" type="tel" maxlength="10" name="mobileNo" onblur="phonenumber(this.value)"  onkeypress="if(event.keyCode!=9) return numbersonly(this, event);"  required>
