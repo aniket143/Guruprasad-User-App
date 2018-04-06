@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='utf-8'?>
-<widget id="com.phonegap.example" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
+<widget id="com.guruprasad.userapp" version="1.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:gap="http://phonegap.com/ns/1.0">
     <name>GPUA</name>
     <description>
         Guruprasad User Apps
     </description>
-    <author email="support@phonegap.com" href="http://phonegap.com">
-        PhoneGap Team
+    <author email="aniket143@gmail.com" href="http://inetinfo.in">
+        Inet Team
     </author>
     <content src="index.html" />
     <preference name="fullscreen" value="false" />
